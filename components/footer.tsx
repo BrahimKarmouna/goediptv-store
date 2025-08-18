@@ -263,7 +263,8 @@ export function Footer() {
             </Button>
           </div>
           <p className="text-sm text-muted-foreground pt-4">
-            © {new Date().getFullYear()} StreamPro IPTV. All rights reserved. | Premium IPTV Subscriptions Worldwide
+            © {new Date().getFullYear()} StreamPro IPTV. All rights res
+            erved. | Premium IPTV Subscriptions Worldwide
           </p>
           <div className="flex justify-center space-x-6 pt-4">
             <a href="/privacy-policy" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</a>
