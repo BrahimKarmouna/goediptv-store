@@ -1,5 +1,8 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Play, Shield, Tv } from "lucide-react"
+import { NavLink } from "./ui/nav-link"
 
 export function HeroSection() {
   return (
@@ -44,17 +47,21 @@ export function HeroSection() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90">
-              <Play className="w-6 h-6 mr-2" />
-              Start Free Trial
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-8 py-6 border-border hover:bg-card bg-transparent"
-            >
-              View Pricing
-            </Button>
+            <NavLink href="/#pricing" targetId="#pricing">
+              <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 w-full sm:w-auto">
+                <Play className="w-6 h-6 mr-2" />
+                Start Free Trial
+              </Button>
+            </NavLink>
+            <NavLink href="/#pricing" targetId="#pricing">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-lg px-8 py-6 border-border hover:bg-card bg-transparent w-full"
+              >
+                View Pricing
+              </Button>
+            </NavLink>
           </div>
         </div>
       </div>
