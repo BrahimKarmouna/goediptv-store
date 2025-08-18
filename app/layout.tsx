@@ -1,21 +1,22 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Montserrat } from "next/font/google"
-import { Open_Sans } from "next/font/google"
+import { Playfair_Display } from "next/font/google"
+import { Inter } from "next/font/google"
 import "./globals.css"
 
-const montserrat = Montserrat({
+const playfair = Playfair_Display({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-montserrat",
-  weight: ["400", "600", "700", "900"],
+  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
 })
 
-const openSans = Open_Sans({
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-open-sans",
-  weight: ["400", "500", "600"],
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"],
 })
 
 export const metadata: Metadata = {
@@ -30,8 +31,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${openSans.variable} dark`}>
-      <body className="font-sans antialiased">{children}</body>
+    <html lang="en" className={`${playfair.variable} ${inter.variable} dark`}>
+      <body className="font-sans antialiased bg-background text-foreground">{children}</body>
     </html>
   )
 }

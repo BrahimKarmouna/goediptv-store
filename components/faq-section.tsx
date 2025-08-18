@@ -45,25 +45,40 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-    <section id="faq" className="py-20 bg-slate-950">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Frequently Asked <span className="text-blue-400">Questions</span>
+    <section id="faq" className="py-24 bg-gradient-to-b from-background to-muted/10">
+      <div className="max-w-4xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6">
+            Frequently Asked <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Questions</span>
           </h2>
-          <p className="text-xl text-slate-400">Everything you need to know about our IPTV service</p>
+          <p className="text-xl text-muted-foreground">Everything you need to know about our IPTV service</p>
         </div>
 
         <Accordion type="single" collapsible className="space-y-4">
           {faqs.map((faq, index) => (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-              className="bg-slate-800 border-slate-700 rounded-lg px-6"
-            >
-              <AccordionTrigger className="text-white hover:text-blue-400 text-left">{faq.question}</AccordionTrigger>
-              <AccordionContent className="text-slate-400 leading-relaxed">{faq.answer}</AccordionContent>
-            </AccordionItem>
+            <div key={index} className="group">
+              <AccordionItem
+                value={`item-${index}`}
+                className="bg-card/50 border border-border/50 hover:border-primary/30 rounded-xl overflow-hidden transition-all duration-300 group-hover:shadow-lg"
+              >
+                <AccordionTrigger className="px-6 py-5 hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                  <div className="text-left">
+                    <div className="flex items-center space-x-4">
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full bg-primary/80 group-hover:bg-primary transition-colors"></div>
+                      <span className="text-lg font-medium text-foreground group-hover:text-primary transition-colors">
+                        {faq.question}
+                      </span>
+                    </div>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-6 pt-2 text-muted-foreground leading-relaxed border-t border-border/30">
+                  <div className="pl-6">
+                    {faq.answer}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+              <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
           ))}
         </Accordion>
       </div>

@@ -1,13 +1,20 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Phone } from "lucide-react"
 import { NavLink } from "./ui/nav-link"
+import { WhatsAppPopup } from "./whatsapp-popup"
 
 export function Navigation() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showWhatsAppPopup, setShowWhatsAppPopup] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState("Free Trial");
+
+  const closeWhatsAppPopup = () => {
+    setShowWhatsAppPopup(false);
+  };
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault()
@@ -18,83 +25,200 @@ export function Navigation() {
     setIsMenuOpen(false) // Close mobile menu on click
   }
 
+  // Close menu when clicking outside
+  const handleMenuBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  // Handle WhatsApp popup backdrop click
+  const handleWhatsAppBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      closeWhatsAppPopup();
+    }
+  };
+
+  // Close menu when pressing Escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/20 backdrop-blur-xl border-b border-white/10 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="cursor-pointer">
-              <h1 className="text-2xl font-serif font-black text-primary hover:opacity-80 transition-opacity">IPTV Kopen</h1>
+            <Link href="/" className="cursor-pointer group">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                IPTV<span className="text-foreground">Kopen</span>
+                <span className="block h-0.5 bg-gradient-to-r from-primary to-transparent w-0 group-hover:w-full transition-all duration-300"></span>
+              </h1>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-foreground hover:text-primary transition-colors">
-              Home
-            </Link>
-            <NavLink href="/#pricing" targetId="#pricing">Pricing</NavLink>
-            <NavLink href="/#features" targetId="#features">Features</NavLink>
-            <NavLink href="/#testimonials" targetId="#testimonials">Reviews</NavLink>
-            <NavLink href="/#faq" targetId="#faq">FAQ</NavLink>
-            <NavLink href="/#contact" targetId="#contact">Contact</NavLink>
+          <div className="hidden md:flex items-center space-x-1 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 hover:border-white/20 transition-colors">
+            {[
+              { name: 'Home', href: '/', targetId: null },
+              { name: 'Pricing', href: '/#pricing', targetId: '#pricing' },
+              { name: 'Features', href: '/#features', targetId: '#features' },
+              { name: 'Reviews', href: '/#testimonials', targetId: '#testimonials' },
+              { name: 'FAQ', href: '/#faq', targetId: '#faq' },
+              { name: 'Contact', href: '/#contact', targetId: '#contact' },
+            ].map((item) => (
+              item.targetId ? (
+                <NavLink 
+                  key={item.name} 
+                  href={item.href} 
+                  targetId={item.targetId}
+                  className="px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors rounded-full hover:bg-foreground/5"
+                >
+                  {item.name}
+                </NavLink>
+              ) : (
+                <Link 
+                  key={item.name}
+                  href={item.href}
+                  className="px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors rounded-full hover:bg-foreground/5"
+                >
+                  {item.name}
+                </Link>
+              )
+            ))}
           </div>
 
           {/* Contact and CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <div className="flex items-center space-x-2 text-muted-foreground">
-              <Phone className="w-4 h-4" />
-              <span className="text-sm">24/7 Support</span>
-            </div>
-            <NavLink href="/#pricing" targetId="#pricing">
-              <Button className="bg-primary hover:bg-primary/90">Start Free Trial</Button>
-            </NavLink>
+            <a 
+              href="https://wa.me/3197010270035" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-sm font-medium bg-white/5 hover:bg-white/10 transition-all px-4 py-2 rounded-full border border-white/10 hover:border-white/20 cursor-pointer group"
+            >
+              <Phone className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
+              <span className="text-foreground/80 group-hover:text-foreground transition-colors">24/7 Support</span>
+            </a>
+            <Button 
+              onClick={() => {
+                setSelectedPlan("Free Trial");
+                setShowWhatsAppPopup(true);
+              }}
+              className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 shadow-md hover:shadow-primary/30 transition-all cursor-pointer group"
+              size="lg"
+            >
+              Start Free Trial
+            </Button>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-foreground/80 hover:bg-foreground/5 hover:text-primary"
+            >
+              {isMenuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </Button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Overlay */}
         {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-card rounded-lg mt-2">
-              <Link 
-                href="/" 
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <NavLink href="/#pricing" targetId="#pricing" className="block px-3 py-2 hover:text-primary">
-                Pricing
-              </NavLink>
-              <NavLink href="/#features" targetId="#features" className="block px-3 py-2 hover:text-primary">
-                Features
-              </NavLink>
-              <NavLink href="/#testimonials" targetId="#testimonials" className="block px-3 py-2 hover:text-primary">
-                Reviews
-              </NavLink>
-              <NavLink href="/#faq" targetId="#faq" className="block px-3 py-2 hover:text-primary">
-                FAQ
-              </NavLink>
-              <NavLink href="/#contact" targetId="#contact" className="block px-3 py-2 hover:text-primary">
-                Contact
-              </NavLink>
-              <div className="px-3 py-2">
-                <NavLink href="/#pricing" targetId="#pricing">
-                  <Button className="w-full bg-primary hover:bg-primary/90">Start Free Trial</Button>
-                </NavLink>
+          <div 
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden"
+            onClick={handleBackdropClick}
+          >
+            <div className="absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-xl border-t border-white/10 shadow-2xl transform transition-all duration-300">
+            <div className="px-4 pt-2 pb-6 space-y-2">
+              {[
+                { name: 'Home', href: '/', targetId: null },
+                { name: 'Pricing', href: '/#pricing', targetId: '#pricing' },
+                { name: 'Features', href: '/#features', targetId: '#features' },
+                { name: 'Reviews', href: '/#testimonials', targetId: '#testimonials' },
+                { name: 'FAQ', href: '/#faq', targetId: '#faq' },
+                { name: 'Contact', href: '/#contact', targetId: '#contact' },
+              ].map((item) => (
+                <div key={item.name} className="border-b border-border/20 last:border-0">
+                  {item.targetId ? (
+                    <div onClick={() => {
+                      const element = document.querySelector(item.targetId);
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                      setIsMenuOpen(false);
+                    }}>
+                      <NavLink 
+                        href={item.href}
+                        targetId={item.targetId}
+                        className="block px-4 py-3 text-foreground/80 hover:text-primary hover:bg-foreground/5 rounded-lg transition-colors cursor-pointer"
+                      >
+                        {item.name}
+                      </NavLink>
+                    </div>
+                  ) : (
+                    <Link 
+                      href={item.href}
+                      className="block px-4 py-3 text-foreground/80 hover:text-primary hover:bg-foreground/5 rounded-lg transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </div>
+              ))}
+              <div className="pt-4 px-4">
+                <Button 
+                  className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 shadow-md hover:shadow-primary/30 transition-all"
+                  onClick={() => {
+                    setSelectedPlan("Free Trial");
+                    setShowWhatsAppPopup(true);
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  Start Free Trial
+                </Button>
+                <a 
+                  href="https://wa.me/3197010270035" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center mt-4 space-x-2 text-sm text-foreground/80 hover:text-primary transition-colors cursor-pointer group"
+                >
+                  <Phone className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
+                  <span>24/7 Support Available</span>
+                </a>
               </div>
             </div>
           </div>
+        </div>
         )}
       </div>
+      
+      {/* WhatsApp Popup */}
+      {showWhatsAppPopup && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          onClick={handleWhatsAppBackdropClick}
+        >
+          <div className="fixed inset-0 bg-black/30 backdrop-blur-sm" />
+          <div className="relative z-50 w-full max-w-lg">
+            <WhatsAppPopup onClose={closeWhatsAppPopup} planName={selectedPlan} />
+          </div>
+        </div>
+      )}
     </nav>
   )
 }

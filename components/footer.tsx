@@ -16,11 +16,21 @@ export function Footer() {
     }
   }
 
+  const [selectedPlan, setSelectedPlan] = useState("Free Trial");
+
   const handleWhatsAppClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setShowWhatsApp(true);
-    // Force show the popup in case the state update doesn't trigger a re-render
-    setTimeout(() => setShowWhatsApp(true), 0);
+  };
+
+  const closeWhatsAppPopup = () => {
+    setShowWhatsApp(false);
+  };
+
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      closeWhatsAppPopup();
+    }
   };
 
   return (
@@ -45,17 +55,17 @@ export function Footer() {
               Premium IPTV subscriptions with 20,000+ channels worldwide. Your gateway to unlimited entertainment in crystal clear quality.
             </p>
             <div className="flex space-x-3 pt-2">
-              <Button variant="ghost" size="icon" className="rounded-full hover:bg-primary/10 hover:text-primary transition-all">
-                <Facebook className="w-5 h-5" />
+              <Button variant="ghost" size="icon" className="rounded-full hover:bg-primary/10 hover:text-primary transition-all cursor-pointer group">
+                <Facebook className="w-5 h-5 group-hover:scale-110 transition-transform" />
               </Button>
-              <Button variant="ghost" size="icon" className="rounded-full hover:bg-blue-400/10 hover:text-blue-400 transition-all">
-                <Twitter className="w-5 h-5" />
+              <Button variant="ghost" size="icon" className="rounded-full hover:bg-blue-400/10 hover:text-blue-400 transition-all cursor-pointer group">
+                <Twitter className="w-5 h-5 group-hover:scale-110 transition-transform" />
               </Button>
-              <Button variant="ghost" size="icon" className="rounded-full hover:bg-pink-500/10 hover:text-pink-500 transition-all">
-                <Instagram className="w-5 h-5" />
+              <Button variant="ghost" size="icon" className="rounded-full hover:bg-pink-500/10 hover:text-pink-500 transition-all cursor-pointer group">
+                <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
               </Button>
-              <Button variant="ghost" size="icon" className="rounded-full hover:bg-red-500/10 hover:text-red-500 transition-all">
-                <Youtube className="w-5 h-5" />
+              <Button variant="ghost" size="icon" className="rounded-full hover:bg-red-500/10 hover:text-red-500 transition-all cursor-pointer group">
+                <Youtube className="w-5 h-5 group-hover:scale-110 transition-transform" />
               </Button>
             </div>
           </div>
@@ -79,7 +89,7 @@ export function Footer() {
                   <a 
                     href={item.href}
                     onClick={(e) => handleScroll(e, item.target)}
-                    className="text-muted-foreground hover:text-primary transition-colors flex items-center group"
+                    className="text-muted-foreground hover:text-primary transition-colors cursor-pointer flex items-center group"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-primary/0 group-hover:bg-primary mr-3 transition-all duration-300"></span>
                     {item.name}
@@ -115,7 +125,7 @@ export function Footer() {
                       <li key={index} className="group">
                         <a 
                           href={item.href} 
-                          className="text-muted-foreground hover:text-primary transition-colors flex items-start group-hover:translate-x-1 transition-transform"
+                          className="text-muted-foreground hover:text-primary transition-colors cursor-pointer flex items-start group-hover:translate-x-1 transition-transform"
                         >
                           <span className="mr-2">•</span>
                           <span>{item.name}</span>
@@ -143,7 +153,7 @@ export function Footer() {
                       <li key={index} className="group">
                         <a 
                           href={item.href}
-                          className="text-muted-foreground hover:text-primary transition-colors flex items-start group-hover:translate-x-1 transition-transform"
+                          className="text-muted-foreground hover:text-primary transition-colors cursor-pointer flex items-start group-hover:translate-x-1 transition-transform"
                         >
                           <span className="mr-2">•</span>
                           <span>{item.name}</span>
@@ -171,7 +181,7 @@ export function Footer() {
                       <li key={index} className="group">
                         <a 
                           href={item.href} 
-                          className="text-muted-foreground hover:text-primary transition-colors flex items-start group-hover:translate-x-1 transition-transform"
+                          className="text-muted-foreground hover:text-primary transition-colors cursor-pointer flex items-start group-hover:translate-x-1 transition-transform"
                         >
                           <span className="mr-2">•</span>
                           <span>{item.name}</span>
@@ -291,7 +301,17 @@ export function Footer() {
           </span>
         </a>
       </div>
-      {showWhatsApp && <WhatsAppPopup onClose={() => setShowWhatsApp(false)} />}
+      {showWhatsApp && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          onClick={handleBackdropClick}
+        >
+          <div className="fixed inset-0 bg-black/30 backdrop-blur-sm" />
+          <div className="relative z-50 w-full max-w-lg">
+            <WhatsAppPopup onClose={closeWhatsAppPopup} planName={selectedPlan} />
+          </div>
+        </div>
+      )}
     </footer>
   )
 }

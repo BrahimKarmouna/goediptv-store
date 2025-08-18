@@ -48,38 +48,50 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section id="testimonials" className="py-20 bg-slate-900">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            What Our <span className="text-blue-400">Customers Say</span>
+    <section id="testimonials" className="py-24 bg-muted/20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6">
+            What Our <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Customers Say</span>
           </h2>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Join thousands of satisfied customers who have made the switch to our premium IPTV service.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-slate-800 border-slate-700">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+            <Card 
+              key={index} 
+              className="bg-card/50 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg group"
+            >
+              <CardContent className="p-8 h-full flex flex-col">
+                <div className="flex items-center mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star 
+                      key={i} 
+                      className={`w-5 h-5 ${i < testimonial.rating ? 'text-yellow-400 fill-yellow-400' : 'text-muted-foreground/20 fill-muted-foreground/10'} transition-colors`} 
+                    />
                   ))}
                 </div>
 
-                <p className="text-slate-300 mb-6 leading-relaxed">"{testimonial.text}"</p>
+                <p className="text-foreground/90 mb-8 leading-relaxed flex-grow relative">
+                  <span className="absolute -top-6 -left-2 text-7xl text-primary/10 font-serif leading-none">"</span>
+                  <span className="relative z-10">{testimonial.text}</span>
+                </p>
 
-                <div className="flex items-center">
-                  <img
-                    src={testimonial.avatar || "/placeholder.svg"}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full mr-4"
-                  />
-                  <div>
-                    <div className="font-semibold text-white">{testimonial.name}</div>
-                    <div className="text-sm text-slate-400">{testimonial.location}</div>
+                <div className="flex items-center pt-4 border-t border-border/30">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-full -m-0.5 group-hover:opacity-100 opacity-0 transition-opacity"></div>
+                    <img
+                      src={testimonial.avatar || "/placeholder.svg"}
+                      alt={testimonial.name}
+                      className="w-14 h-14 rounded-full relative z-10 border-2 border-background"
+                    />
+                  </div>
+                  <div className="ml-4">
+                    <div className="font-semibold text-foreground">{testimonial.name}</div>
+                    <div className="text-sm text-muted-foreground">{testimonial.location}</div>
                   </div>
                 </div>
               </CardContent>
