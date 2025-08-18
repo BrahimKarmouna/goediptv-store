@@ -9,13 +9,15 @@ export function HeroSection() {
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-no-repeat"
         style={{
-          backgroundImage: `url('/abstract-digital-network.png')`,
+          backgroundImage: `url('https://i.ibb.co/B2jH9n35/TV.png')`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-background/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
       </div>
 
       {/* Content */}
