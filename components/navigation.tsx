@@ -107,16 +107,19 @@ export function Navigation() {
               <Phone className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
               <span className="text-foreground/80 group-hover:text-foreground transition-colors">24/7 Support</span>
             </a>
-            <Button 
-              onClick={() => {
-                setSelectedPlan("Free Trial");
-                setShowWhatsAppPopup(true);
-              }}
-              className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 shadow-md hover:shadow-primary/30 transition-all cursor-pointer group"
-              size="lg"
+            <NavLink 
+              href="#pricing"
+              targetId="#pricing"
+              className="hidden md:flex items-center gap-2 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5"
             >
               Start Free Trial
-            </Button>
+              <span className="w-5 h-5 flex items-center justify-center bg-white/20 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </span>
+            </NavLink>
           </div>
 
           {/* Mobile menu button */}
@@ -140,7 +143,7 @@ export function Navigation() {
         {isMenuOpen && (
           <div 
             className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden"
-            onClick={handleBackdropClick}
+            onClick={handleMenuBackdropClick}
           >
             <div className="absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-xl border-t border-white/10 shadow-2xl transform transition-all duration-300">
             <div className="px-4 pt-2 pb-6 space-y-2">
@@ -181,25 +184,20 @@ export function Navigation() {
                 </div>
               ))}
               <div className="pt-4 px-4">
-                <Button 
-                  className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 shadow-md hover:shadow-primary/30 transition-all"
-                  onClick={() => {
-                    setSelectedPlan("Free Trial");
-                    setShowWhatsAppPopup(true);
-                    setIsMenuOpen(false);
-                  }}
+                <NavLink 
+                  href="#pricing"
+                  targetId="#pricing"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="w-full justify-between group flex items-center px-4 py-2 text-sm font-medium hover:bg-muted/50 rounded-md transition-colors"
                 >
                   Start Free Trial
-                </Button>
-                <a 
-                  href="https://wa.me/3197010270035" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center mt-4 space-x-2 text-sm text-foreground/80 hover:text-primary transition-colors cursor-pointer group"
-                >
-                  <Phone className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
-                  <span>24/7 Support Available</span>
-                </a>
+                  <span className="w-5 h-5 flex items-center justify-center bg-primary/10 text-primary rounded-full group-hover:bg-primary/20 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right">
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </span>
+                </NavLink>
               </div>
             </div>
           </div>

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button"
 import { Facebook, Twitter, Instagram, Youtube, Phone, Mail, MapPin, MessageCircle } from "lucide-react"
+import { NavLink } from "./ui/nav-link"
 import { WhatsAppPopup } from "./whatsapp-popup"
 
 export function Footer() {
@@ -242,13 +243,18 @@ export function Footer() {
               >
                 View All Plans & Pricing
               </Button>
-              <Button 
-                variant="outline" 
-                className="flex-1 border-primary text-primary hover:bg-primary/10 cursor-pointer"
-                onClick={handleWhatsAppClick}
+              <NavLink
+                href="#pricing"
+                targetId="#pricing"
+                className="flex-1"
               >
-                Start Free Trial
-              </Button>
+                <Button 
+                  variant="outline" 
+                  className="w-full border-primary text-primary hover:bg-primary/10 cursor-pointer"
+                >
+                  Start Free Trial
+                </Button>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -264,13 +270,18 @@ export function Footer() {
             >
               View All Plans & Pricing
             </Button>
-            <Button 
-              variant="outline"
-              onClick={handleWhatsAppClick}
-              className="px-6 py-3 border border-primary/20 text-primary rounded-full font-medium hover:bg-primary/5 transition-all cursor-pointer"
+            <NavLink
+              href="#pricing"
+              targetId="#pricing"
+              className="block"
             >
-              Start Free Trial
-            </Button>
+              <Button 
+                variant="outline"
+                className="px-6 py-3 border border-primary/20 text-primary rounded-full font-medium hover:bg-primary/5 transition-all cursor-pointer"
+              >
+                Start Free Trial
+              </Button>
+            </NavLink>
           </div>
           <p className="text-sm text-muted-foreground pt-4">
             © {new Date().getFullYear()} StreamPro IPTV. All rights res
