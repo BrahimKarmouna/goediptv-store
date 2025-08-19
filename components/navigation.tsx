@@ -162,19 +162,18 @@ export function Navigation() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button 
-              variant="ghost" 
-              size="icon" 
+          <div className="md:hidden flex items-center">
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-foreground/80 hover:bg-foreground/5 hover:text-primary"
+              className="inline-flex items-center justify-center p-3 rounded-full text-foreground hover:text-primary hover:bg-foreground/5 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
             >
+              <span className="sr-only">Open main menu</span>
               {isMenuOpen ? (
-                <X className="w-5 h-5" />
+                <X className="block h-8 w-8" aria-hidden="true" />
               ) : (
-                <Menu className="w-5 h-5" />
+                <Menu className="block h-8 w-8" aria-hidden="true" />
               )}
-            </Button>
+            </button>
           </div>
         </div>
 
