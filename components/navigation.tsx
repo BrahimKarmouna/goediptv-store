@@ -10,7 +10,12 @@ import { WhatsAppPopup } from './whatsapp-popup';
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showWhatsAppPopup, setShowWhatsAppPopup] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState("Free Trial");
+  const [selectedPlan, setSelectedPlan] = useState({
+    name: "Free Trial",
+    period: "1 uur",
+    devices: 1,
+    isTrial: true
+  });
 
   const closeWhatsAppPopup = () => {
     setShowWhatsAppPopup(false);
@@ -146,9 +151,16 @@ export function Navigation() {
               <Phone className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
               <span className="text-foreground/80 group-hover:text-foreground transition-colors">24/7 Support</span>
             </a>
-            <NavLink 
-              href="#pricing"
-              targetId="#pricing"
+            <button
+              onClick={() => {
+                setSelectedPlan({
+                  name: "Free Trial",
+                  period: "1 uur",
+                  devices: 1,
+                  isTrial: true
+                });
+                setShowWhatsAppPopup(true);
+              }}
               className="hidden md:flex items-center gap-2 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5"
             >
               Start Free Trial
@@ -158,7 +170,7 @@ export function Navigation() {
                   <path d="m12 5 7 7-7 7"></path>
                 </svg>
               </span>
-            </NavLink>
+            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -230,10 +242,17 @@ export function Navigation() {
                 </div>
               ))}
               <div className="pt-4 px-4">
-                <NavLink 
-                  href="#pricing"
-                  targetId="#pricing"
-                  onClick={() => setIsMenuOpen(false)}
+                <button
+                  onClick={() => {
+                    setSelectedPlan({
+                      name: "Free Trial",
+                      period: "1 uur",
+                      devices: 1,
+                      isTrial: true
+                    });
+                    setIsMenuOpen(false);
+                    setShowWhatsAppPopup(true);
+                  }}
                   className="w-full justify-between group flex items-center px-4 py-2 text-sm font-medium hover:bg-muted/50 rounded-md transition-colors"
                 >
                   Start Free Trial
@@ -243,7 +262,7 @@ export function Navigation() {
                       <path d="m12 5 7 7-7 7"></path>
                     </svg>
                   </span>
-                </NavLink>
+                </button>
               </div>
             </div>
           </div>
@@ -261,7 +280,10 @@ export function Navigation() {
           <WhatsAppPopup 
             isOpen={showWhatsAppPopup}
             onClose={closeWhatsAppPopup}
-            planName={selectedPlan}
+            planName={selectedPlan.name}
+            period={selectedPlan.period}
+            devices={selectedPlan.devices}
+            isTrial={selectedPlan.isTrial}
           />
         </div>
       </div>

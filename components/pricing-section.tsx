@@ -114,7 +114,12 @@ const plans = [
 ]
 
 function WhatsAppPopup({ onClose, planName }: { onClose: () => void, planName: string }) {
-  const message = `Hallo, ik wil graag het ${planName} abonnement afnemen. Kunt u me hier meer over vertellen?`;
+  const message = `Hallo, ik wil graag het volgende bestellen:
+
+- Abonnement: ${planName}
+- Aantal apparaten: 1 apparaat
+
+Kunt u mij hier meer over vertellen?`;
   const whatsappUrl = `https://api.whatsapp.com/send/?phone=3197010270035&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
 
   return (
