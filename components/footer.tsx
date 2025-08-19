@@ -319,7 +319,11 @@ export function Footer() {
         >
           <div className="fixed inset-0 bg-black/30 backdrop-blur-sm" />
           <div className="relative z-50 w-full max-w-lg">
-            <WhatsAppPopup onClose={closeWhatsAppPopup} planName={selectedPlan} />
+            <WhatsAppPopup 
+              isOpen={showWhatsApp} 
+              onClose={closeWhatsAppPopup} 
+              planName={selectedPlan} 
+            />
           </div>
         </div>
       )}

@@ -1,36 +1,46 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { Globe, Shield, Smartphone, Tv, Users, Zap } from "lucide-react"
+import { Tv, Smartphone, Zap, Shield, Headphones, Award, Clock, Globe } from "lucide-react"
 
 const features = [
   {
     icon: Tv,
-    title: "20,000+ Channels",
-    description: "Access live TV channels from over 100 countries including premium sports, news, and entertainment.",
+    title: "10.000+ Kanalen",
+    description: "Geniet van een uitgebreide selectie van internationale en Nederlandse zenders in HD en 4K kwaliteit.",
   },
   {
     icon: Zap,
-    title: "Zero Buffering",
-    description: "Our advanced streaming technology ensures smooth playback with anti-freeze protection.",
+    title: "Geen Vertraging",
+    description: "Vloeiend kijken zonder bufferen dankzij ons geavanceerde netwerk en servers.",
   },
   {
     icon: Smartphone,
-    title: "Multi-Device Support",
-    description: "Watch on any device - Smart TV, phone, tablet, computer, or streaming device.",
+    title: "Multi-Apparaat",
+    description: "Kijk op al je apparaten - Smart TV, telefoon, tablet of computer, allemaal tegelijk.",
   },
   {
     icon: Globe,
-    title: "Global Content",
-    description: "International channels in multiple languages with content from every continent.",
+    title: "Wereldwijd Beschikbaar",
+    description: "Overal terwijs toegang tot je favoriete zenders, waar je ook bent.",
   },
   {
     icon: Shield,
-    title: "Secure & Private",
-    description: "Your viewing is completely private with encrypted connections and no logging.",
+    title: "Veilig & Betrouwbaar",
+    description: "Veilige verbinding met 256-bit encryptie voor al je kijkgedrag.",
   },
   {
-    icon: Users,
-    title: "Family Friendly",
-    description: "Parental controls and family packages with content suitable for all ages.",
+    icon: Headphones,
+    title: "24/7 Support",
+    description: "Ons Nederlandse supportteam staat dag en nacht voor je klaar.",
+  },
+  {
+    icon: Award,
+    title: "Premium Kwaliteit",
+    description: "Scherp beeld in Full HD en 4K kwaliteit met uitstekend geluid.",
+  },
+  {
+    icon: Clock,
+    title: "Uitgebreide Terugkijker",
+    description: "Kijk programma's tot 7 dagen terug met onze uitgebreide catch-up functionaliteit.",
   },
 ]
 
@@ -38,35 +48,50 @@ export default function FeaturesSection() {
   return (
     <section id="features" className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6">
-            Why Choose <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Our IPTV</span>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            Waarom kiezen voor onze <span className="text-primary">IPTV service</span>?
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Experience the future of television with our cutting-edge IPTV technology and unmatched content library.
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Ontdek de voordelen van de beste IPTV-ervaring in Nederland
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <Card 
-              key={index} 
-              className="group bg-card/50 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg overflow-hidden"
-            >
-              <CardContent className="p-8 text-center h-full flex flex-col">
-                <div className="flex justify-center mb-6">
-                  <div className="p-4 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 group-hover:from-primary/20 group-hover:to-primary/10 transition-all duration-300">
-                    <feature.icon className="w-8 h-8 text-primary" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {features.map((feature, index) => {
+            const Icon = feature.icon
+            return (
+              <Card key={index} className="group hover:shadow-lg transition-shadow duration-300 border-border/50 hover:border-primary/30">
+                <CardContent className="p-6">
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
+                    <Icon className="w-7 h-7 text-primary" />
                   </div>
-                </div>
-                <h3 className="text-2xl font-serif font-bold text-foreground mb-4">{feature.title}</h3>
-                <p className="text-muted-foreground leading-relaxed flex-grow">{feature.description}</p>
-                <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="h-0.5 w-12 bg-gradient-to-r from-primary to-transparent mx-auto"></div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                  <h3 className="text-xl font-semibold mb-2 text-foreground">{feature.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                </CardContent>
+              </Card>
+            )
+          })}
+        </div>
+
+        <div className="mt-16 text-center">
+          <p className="text-muted-foreground mb-8">
+            Meer dan 10.000 tevreden klanten in heel Nederland
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="#pricing"
+              className="inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200"
+            >
+              Bekijk onze abonnementen
+            </a>
+            <a
+              href="#faq"
+              className="inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-full border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors duration-200"
+            >
+              Veelgestelde vragen
+            </a>
+          </div>
         </div>
       </div>
     </section>

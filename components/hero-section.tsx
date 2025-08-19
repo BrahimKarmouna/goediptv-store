@@ -71,8 +71,16 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 max-w-md">
             <Button 
               size="lg" 
-              onClick={() => setShowWhatsAppPopup(true)}
-              className="w-full sm:w-auto text-lg px-8 py-7 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 shadow-lg hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300 group"
+              onClick={(e) => {
+                e.preventDefault();
+                setShowWhatsAppPopup(true);
+                // Smooth scroll to pricing section
+                const pricingSection = document.querySelector('#pricing');
+                if (pricingSection) {
+                  pricingSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="w-full text-lg px-8 py-7 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 shadow-lg hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300 group cursor-pointer"
             >
               <Play className="w-6 h-6 mr-2 group-hover:translate-x-1 transition-transform" />
               Start Free Trial
@@ -81,7 +89,7 @@ export function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full text-lg px-8 py-7 border-2 border-border/50 hover:border-primary/50 bg-background/50 backdrop-blur-sm hover:bg-background/80 transition-all duration-300 group"
+                className="w-full text-lg px-8 py-7 border-2 border-border/50 hover:border-primary/50 bg-background/50 backdrop-blur-sm hover:bg-background/80 transition-all duration-300 group cursor-pointer"
               >
                 <span className="group-hover:translate-x-1 transition-transform">View Pricing</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 group-hover:translate-x-1 transition-transform">
@@ -115,18 +123,6 @@ export function HeroSection() {
         </div>
       </div>
       
-      {/* WhatsApp Popup */}
-      {showWhatsAppPopup && (
-        <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          onClick={handleBackdropClick}
-        >
-          <div className="fixed inset-0 bg-black/30 backdrop-blur-sm" />
-          <div className="relative z-50 w-full max-w-lg">
-            <WhatsAppPopup onClose={closeWhatsAppPopup} planName={selectedPlan} />
-          </div>
-        </div>
-      )}
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">

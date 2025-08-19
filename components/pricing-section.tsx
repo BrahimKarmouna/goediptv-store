@@ -28,76 +28,81 @@ const DeviceToggle = ({ devices, activeDevice, onDeviceChange }) => {
 
 const plans = [
   {
-    name: "1 Year",
+    name: "1 Jaar",
     originalPrice: "€59.99",
     discountedPrice: "€59.99",
-    period: "1 year",
+    period: "1 jaar",
     periodLabel: "1jr/€59,99",
-    description: "The best plan!",
+    description: "Beste keuze!",
     icon: Crown,
+    
     features: [
-      "All devices supported",
-      "+75,000 movies & series",
-      "24/7 online support",
-      "4K, FHD, HD & SD quality",
-      "International package with +21,000 IPTV channels"
+      "Werkt op alle apparaten",
+      "+75.000 films & series",
+      "24/7 Nederlandse klantenservice",
+      "4K, Full HD, HD & SD kwaliteit",
+      "Internationaal pakket met +21.000 IPTV kanalen",
+      "Gratis updates gedurende je abonnement"
     ],
     popular: true,
-    cta: "Get Started",
+    cta: "Nu starten",
     bestValue: true
   },
   {
-    name: "6 Months",
+    name: "6 Maanden",
     originalPrice: "€79.98",
     discountedPrice: "€39.99",
-    period: "6 months",
+    period: "6 maanden",
     periodLabel: "6mnd/€39,99",
-    description: "Great value",
+    description: "Voordelige keuze",
     icon: Star,
     features: [
-      "All devices supported",
-      "+75,000 movies & series",
-      "24/7 online support",
-      "4K, FHD, HD & SD quality",
-      "International package with +21,000 IPTV channels"
+      "Werkt op alle apparaten",
+      "+75.000 films & series",
+      "24/7 Nederlandse klantenservice",
+      "4K, Full HD, HD & SD kwaliteit",
+      "Internationaal pakket met +21.000 IPTV kanalen",
+      "Gratis updates gedurende je abonnement"
     ],
     popular: false,
-    cta: "Get Started"
+    cta: "Nu starten"
   },
   {
-    name: "3 Months",
+    name: "3 Maanden",
     originalPrice: "€49.98",
     discountedPrice: "€24.99",
-    period: "3 months",
+    period: "3 maanden",
     periodLabel: "3mnd/€24,99",
-    description: "Flexible option",
+    description: "Flexibel abonnement",
     icon: Zap,
     features: [
-      "All devices supported",
-      "+75,000 movies & series",
-      "24/7 online support",
-      "4K, FHD, HD & SD quality",
-      "International package with +21,000 IPTV channels"
+      "Werkt op alle apparaten",
+      "+75.000 films & series",
+      "24/7 Nederlandse klantenservice",
+      "4K, Full HD, HD & SD kwaliteit",
+      "Internationaal pakket met +21.000 IPTV kanalen",
+      "Gratis updates gedurende je abonnement"
     ],
     popular: false,
-    cta: "Get Started"
+    cta: "Nu starten"
   },
   {
-    name: "Free Trial",
+    name: "Gratis Proef",
     price: "Gratis",
-    period: "1 hour",
-    periodLabel: "Free Trial",
-    description: "Try before you buy",
+    period: "1 uur",
+    periodLabel: "Gratis Proef",
+    description: "Probeer eerst",
     icon: Sparkles,
     features: [
-      "All devices supported",
-      "+75,000 movies & series",
-      "24/7 online support",
-      "4K, FHD, HD & SD quality",
-      "International package with +21,000 IPTV channels"
+      "Werkt op alle apparaten",
+      "Toegang tot alle kanalen",
+      "24/7 Nederlandse klantenservice",
+      "HD & Full HD kwaliteit",
+      "Geen creditcard nodig",
+      "Directe activatie"
     ],
     popular: false,
-    cta: "Request Free Trial",
+    cta: "Probeer nu 1 uur gratis",
     isTrial: true
   }
 ]
@@ -236,9 +241,10 @@ export default function PricingSection() {
   }, []);
 
   const devices = [
-    { id: 'single', label: '1 Device', icon: Smartphone },
-    { id: 'double', label: '2-3 Devices', icon: Tablet },
-    { id: 'family', label: '4-5 Devices', icon: Monitor },
+    { id: 'all', label: 'Alle apparaten', icon: Monitor },
+    { id: 'smart-tv', label: 'Smart TV', icon: Tv },
+    { id: 'phone', label: 'Telefoon', icon: Smartphone },
+    { id: 'tablet', label: 'Tablet', icon: Tablet },
   ];
 
   const getPrice = (plan) => {
@@ -247,10 +253,12 @@ export default function PricingSection() {
     let price = parseFloat(plan.discountedPrice.replace('€', '').replace(',', '.'));
     
     // Apply device multiplier
-    if (activeDevice === 'double') {
-      price = price * 1.5;
-    } else if (activeDevice === 'family') {
-      price = price * 2;
+    if (activeDevice === 'smart-tv') {
+      price = price * 1.2;
+    } else if (activeDevice === 'phone') {
+      price = price * 1.1;
+    } else if (activeDevice === 'tablet') {
+      price = price * 1.3;
     }
     
     return `€${price.toFixed(2).replace('.', ',')}`;
@@ -260,12 +268,14 @@ export default function PricingSection() {
     if (plan.isTrial) return plan.periodLabel;
     
     let label = '';
-    if (activeDevice === 'single') {
-      label = `1 device • ${plan.period}`;
-    } else if (activeDevice === 'double') {
-      label = `2-3 devices • ${plan.period}`;
+    if (activeDevice === 'all') {
+      label = `Alle apparaten • ${plan.period}`;
+    } else if (activeDevice === 'smart-tv') {
+      label = `Smart TV • ${plan.period}`;
+    } else if (activeDevice === 'phone') {
+      label = `Telefoon • ${plan.period}`;
     } else {
-      label = `4-5 devices • ${plan.period}`;
+      label = `Tablet • ${plan.period}`;
     }
     
     return label;
@@ -276,10 +286,10 @@ export default function PricingSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6">
-            Choose Your <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Plan</span>
+            Kies je abonnement
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Flexible pricing plans that fit your needs. No hidden fees. Cancel anytime.
+            Flexibele prijzen die bij je passen. Geen verborgen kosten. Annuleer wanneer je wilt.
           </p>
         </div>
 
@@ -298,12 +308,12 @@ export default function PricingSection() {
             >
               {plan.bestValue && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-400 to-amber-500 text-foreground text-xs font-semibold px-4 py-1 rounded-full whitespace-nowrap shadow-lg shadow-amber-500/20 z-10">
-                  Best Value
+                  Beste waarde
                 </div>
               )}
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primary to-primary/80 text-white text-xs font-semibold px-4 py-1 rounded-full whitespace-nowrap shadow-lg shadow-primary/20 z-10">
-                  Most Popular
+                  Meest populair
                 </div>
               )}
               <Card 
@@ -347,8 +357,8 @@ export default function PricingSection() {
                       {plan.price}
                     </p>
                   ) : (
-                    <p className="text-sm text-muted-foreground text-center mt-1">
-                      {getPeriodLabel(plan)}
+                    <p className="text-sm text-muted-foreground text-center mb-8">
+                      Probeer 1 uur gratis uit. Geen creditcard nodig. Geen verplichtingen.
                     </p>
                   )}
                   {plan.description && (
@@ -414,9 +424,9 @@ export default function PricingSection() {
 
         <div className="mt-12 text-center">
           <p className="text-muted-foreground text-sm">
-            Need a custom plan for more devices?{' '}
+            Heb je een aangepast plan nodig voor meer apparaten?{' '}
             <a href="#contact" className="text-primary hover:underline font-medium">
-              Contact our sales team
+              Neem contact op met onze verkoopafdeling
             </a>
           </p>
         </div>

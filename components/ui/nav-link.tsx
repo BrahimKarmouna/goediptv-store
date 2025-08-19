@@ -22,12 +22,21 @@ export function NavLink({ href, children, targetId, className = '' }: NavLinkPro
     
     e.preventDefault();
     
+    // Close any open dialogs or menus
+    const mobileMenu = document.querySelector('[data-mobile-menu]');
+    if (mobileMenu) {
+      mobileMenu.classList.add('hidden');
+    }
+    
     // If we're already on the home page, just scroll to section
     if (pathname === '/' && targetId) {
       const element = document.querySelector(targetId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-        window.history.pushState({}, '', targetId);
+        // Add a small delay to ensure any open menus are closed before scrolling
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+          window.history.pushState({}, '', targetId);
+        }, 100);
       }
     } else if (targetId) {
       // If we're on a different page, use Next.js router to navigate

@@ -4,34 +4,21 @@ import { useState, useEffect } from 'react';
 import { X, MessageCircle, Copy } from 'lucide-react';
 
 interface WhatsAppPopupProps {
+  isOpen: boolean;
   onClose: () => void;
   planName?: string;
 }
 
-export function WhatsAppPopup({ onClose, planName = 'Free Trial' }: WhatsAppPopupProps) {
-  const [isVisible, setIsVisible] = useState(false);
+export function WhatsAppPopup({ isOpen = false, onClose, planName = 'Free Trial' }: WhatsAppPopupProps) {
   const [copied, setCopied] = useState(false);
   const message = `Hallo, ik wil graag een proefperiode starten met StreamPro IPTV${planName ? ` voor het ${planName} abonnement` : ''}.`;
   const whatsappUrl = `https://api.whatsapp.com/send/?phone=3197010270035&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
   const phoneNumber = '+31 970 102 7003';
   const rawPhoneNumber = '+319701027003';
 
-  // Initialize popup as visible when component mounts
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const handleClose = () => {
-    setIsVisible(false);
-    // Wait for the fade-out animation to complete before calling onClose
-    setTimeout(() => {
-      onClose();
-    }, 200);
-  };
-
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
-      handleClose();
+      onClose();
     }
   };
 
@@ -41,7 +28,9 @@ export function WhatsAppPopup({ onClose, planName = 'Free Trial' }: WhatsAppPopu
     setTimeout(() => setCopied(false), 2000);
   };
 
-  if (!isVisible) return null;
+  if (!isOpen) {
+    return null;
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -55,14 +44,13 @@ export function WhatsAppPopup({ onClose, planName = 'Free Trial' }: WhatsAppPopu
         <div className="p-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xl font-bold text-foreground">Start Your Free Trial</h3>
-            <button
-              type="button"
-              onClick={handleClose}
-              className="text-muted-foreground hover:text-foreground transition-colors"
+            <div 
+              className="absolute right-4 top-4 p-1 rounded-full hover:bg-foreground/5 transition-colors cursor-pointer"
+              onClick={onClose}
               aria-label="Close"
             >
-              <X className="w-5 h-5" />
-            </button>
+              <X className="w-5 h-5 text-foreground/70 hover:text-foreground" />
+            </div>
           </div>
           
           <p className="text-muted-foreground mb-6">
@@ -80,7 +68,7 @@ export function WhatsAppPopup({ onClose, planName = 'Free Trial' }: WhatsAppPopu
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 mb-6"
-            onClick={handleClose}
+            onClick={onClose}
           >
             <MessageCircle className="w-5 h-5" />
             <span>Open WhatsApp</span>

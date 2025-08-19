@@ -1,11 +1,11 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Menu, X, Phone } from "lucide-react"
-import { NavLink } from "./ui/nav-link"
-import { WhatsAppPopup } from "./whatsapp-popup"
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Menu, X, Phone } from 'lucide-react';
+import { NavLink } from './ui/nav-link';
+import { WhatsAppPopup } from './whatsapp-popup';
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,8 +21,15 @@ export function Navigation() {
     const element = document.querySelector(targetId)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
+      // Close mobile menu if open
+      if (isMenuOpen) {
+        setIsMenuOpen(false)
+        // Wait for the menu to close before scrolling
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" })
+        }, 300)
+      }
     }
-    setIsMenuOpen(false) // Close mobile menu on click
   }
 
   // Close menu when clicking outside
@@ -69,13 +76,45 @@ export function Navigation() {
           <div className="hidden md:flex items-center space-x-1 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 hover:border-white/20 transition-colors">
             {[
               { name: 'Home', href: '/', targetId: null },
+              { 
+                name: 'Nl iptv', 
+                isDropdown: true,
+                items: [
+                  { name: 'Beste Nederlandse IPTV', href: '/beste-nederlandse-iptv-aanbieders' },
+                  { name: 'IPTV Kopen Gids', href: '/iptv-kopen-gids' },
+                  { name: 'Goedkope IPTV', href: '/goedkope-iptv-nederland' },
+                ]
+              },
               { name: 'Pricing', href: '/#pricing', targetId: '#pricing' },
               { name: 'Features', href: '/#features', targetId: '#features' },
               { name: 'Reviews', href: '/#testimonials', targetId: '#testimonials' },
               { name: 'FAQ', href: '/#faq', targetId: '#faq' },
               { name: 'Contact', href: '/#contact', targetId: '#contact' },
+              { name: 'Handleiding', href: '/handleiding', targetId: null },
             ].map((item) => (
-              item.targetId ? (
+              item.isDropdown ? (
+                <div key={item.name} className="relative group">
+                  <button className="flex items-center px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors rounded-full hover:bg-foreground/5">
+                    {item.name}
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div className="absolute left-0 mt-2 w-56 rounded-lg bg-card shadow-lg border border-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div className="py-1">
+                      {item.items.map((dropdownItem) => (
+                        <Link
+                          key={dropdownItem.name}
+                          href={dropdownItem.href}
+                          className="block px-4 py-2 text-sm text-foreground/80 hover:bg-foreground/5 hover:text-primary transition-colors"
+                        >
+                          {dropdownItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : item.targetId ? (
                 <NavLink 
                   key={item.name} 
                   href={item.href} 
@@ -140,12 +179,14 @@ export function Navigation() {
         </div>
 
         {/* Mobile Navigation Overlay */}
-        {isMenuOpen && (
+        <div 
+          className={`fixed inset-0 bg-black/80 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+          onClick={handleMenuBackdropClick}
+        >
           <div 
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden"
-            onClick={handleMenuBackdropClick}
+            className={`absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-xl border-t border-white/10 shadow-2xl transform transition-all duration-300 ${isMenuOpen ? 'translate-y-0' : '-translate-y-2'}`}
+            data-mobile-menu
           >
-            <div className="absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-xl border-t border-white/10 shadow-2xl transform transition-all duration-300">
             <div className="px-4 pt-2 pb-6 space-y-2">
               {[
                 { name: 'Home', href: '/', targetId: null },
@@ -157,12 +198,18 @@ export function Navigation() {
               ].map((item) => (
                 <div key={item.name} className="border-b border-border/20 last:border-0">
                   {item.targetId ? (
-                    <div onClick={() => {
-                      const element = document.querySelector(item.targetId);
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                      }
+                    <div onClick={(e) => {
+                      e.preventDefault();
                       setIsMenuOpen(false);
+                      
+                      // Small delay to allow menu to start closing before scrolling
+                      setTimeout(() => {
+                        const element = document.querySelector(item.targetId);
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth' });
+                          window.history.pushState({}, '', item.targetId);
+                        }
+                      }, 200);
                     }}>
                       <NavLink 
                         href={item.href}
@@ -202,21 +249,23 @@ export function Navigation() {
             </div>
           </div>
         </div>
-        )}
+        
       </div>
       
       {/* WhatsApp Popup */}
-      {showWhatsAppPopup && (
-        <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          onClick={handleWhatsAppBackdropClick}
-        >
-          <div className="fixed inset-0 bg-black/30 backdrop-blur-sm" />
-          <div className="relative z-50 w-full max-w-lg">
-            <WhatsAppPopup onClose={closeWhatsAppPopup} planName={selectedPlan} />
-          </div>
+      <div 
+        className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-opacity duration-300 ${showWhatsAppPopup ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        onClick={handleWhatsAppBackdropClick}
+      >
+        <div className="fixed inset-0 bg-black/30" />
+        <div className="relative z-50 w-full max-w-lg">
+          <WhatsAppPopup 
+            isOpen={showWhatsAppPopup}
+            onClose={closeWhatsAppPopup}
+            planName={selectedPlan}
+          />
         </div>
-      )}
+      </div>
     </nav>
   )
 }
