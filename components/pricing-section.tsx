@@ -3,22 +3,28 @@
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
-import { Check, Crown, Star, Zap, X, MessageCircle, Sparkles, Tv, Smartphone, Tablet, Monitor } from "lucide-react"
+import { Check, Crown, Star, Zap, X, MessageCircle, Sparkles } from "lucide-react"
 
-const DeviceToggle = ({ devices, activeDevice, onDeviceChange }) => {
+const DeviceToggle = ({ activeDevice, onDeviceChange }) => {
+  const devices = [
+    { id: '1', label: '1 Apparaat' },
+    { id: '2', label: '2 Apparaten' },
+    { id: '3', label: '3 Apparaten' },
+    { id: 'unlimited', label: 'Onbeperkt' }
+  ];
+
   return (
-    <div className="flex items-center justify-center mb-12 bg-muted/30 p-1 rounded-full w-fit mx-auto">
+    <div className="flex flex-wrap items-center justify-center gap-2 mb-12 px-4">
       {devices.map((device) => (
         <button
           key={device.id}
           onClick={() => onDeviceChange(device.id)}
-          className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 flex items-center cursor-pointer ${
+          className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
             activeDevice === device.id
-              ? 'bg-background text-foreground shadow-md'
-              : 'text-muted-foreground hover:text-foreground/80'
+              ? 'bg-primary text-primary-foreground shadow-md'
+              : 'bg-muted/50 text-muted-foreground hover:bg-muted/80 hover:text-foreground'
           }`}
         >
-          <device.icon className={`w-5 h-5 mr-2 ${activeDevice === device.id ? 'text-primary' : ''}`} />
           {device.label}
         </button>
       ))}
@@ -209,8 +215,8 @@ function WhatsAppPopup({ onClose, planName }: { onClose: () => void, planName: s
 export default function PricingSection() {
   const [showWhatsAppPopup, setShowWhatsAppPopup] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("");
-  const [activeDevice, setActiveDevice] = useState('single');
-  const [isYearly, setIsYearly] = useState(true);
+  const [activeDevice, setActiveDevice] = useState('1');
+  const [isYearly] = useState(true);
 
   const handleWhatsAppClick = (planName: string) => {
     setSelectedPlan(planName);
@@ -240,50 +246,35 @@ export default function PricingSection() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, []);
 
-  const devices = [
-    { id: 'all', label: 'Alle apparaten', icon: Monitor },
-    { id: 'smart-tv', label: 'Smart TV', icon: Tv },
-    { id: 'phone', label: 'Telefoon', icon: Smartphone },
-    { id: 'tablet', label: 'Tablet', icon: Tablet },
-  ];
-
   const getPrice = (plan) => {
     if (plan.isTrial) return plan.price;
     
     let price = parseFloat(plan.discountedPrice.replace('€', '').replace(',', '.'));
     
     // Apply device multiplier
-    if (activeDevice === 'smart-tv') {
-      price = price * 1.2;
-    } else if (activeDevice === 'phone') {
-      price = price * 1.1;
-    } else if (activeDevice === 'tablet') {
-      price = price * 1.3;
+    if (activeDevice === '1') {
+      return `€${price.toFixed(2).replace('.', ',')}`;
+    } else if (activeDevice === '2') {
+      price = price * 1.5;
+    } else if (activeDevice === '3') {
+      price = price * 1.8;
+    } else { // unlimited
+      price = price * 2.5;
     }
     
     return `€${price.toFixed(2).replace('.', ',')}`;
   };
 
-  const getPeriodLabel = (plan) => {
-    if (plan.isTrial) return plan.periodLabel;
-    
-    let label = '';
-    if (activeDevice === 'all') {
-      label = `Alle apparaten • ${plan.period}`;
-    } else if (activeDevice === 'smart-tv') {
-      label = `Smart TV • ${plan.period}`;
-    } else if (activeDevice === 'phone') {
-      label = `Telefoon • ${plan.period}`;
-    } else {
-      label = `Tablet • ${plan.period}`;
-    }
-    
-    return label;
+  const getDeviceCountLabel = () => {
+    if (activeDevice === '1') return '1 Apparaat';
+    if (activeDevice === '2') return '2 Apparaten';
+    if (activeDevice === '3') return '3 Apparaten';
+    return 'Onbeperkte apparaten';
   };
 
   return (
-    <section id="pricing" className="py-24 bg-gradient-to-b from-background to-muted/10">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="pricing" className="py-24 bg-gradient-to-b from-background to-muted/10 w-full overflow-hidden">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6">
             Kies je abonnement
@@ -294,13 +285,17 @@ export default function PricingSection() {
         </div>
 
         {/* Device Toggle */}
-        <DeviceToggle 
-          devices={devices} 
-          activeDevice={activeDevice} 
-          onDeviceChange={setActiveDevice} 
-        />
+        <div className="mb-12 text-center">
+          <h3 className="text-lg font-medium text-muted-foreground mb-4">
+            Selecteer aantal apparaten:
+          </h3>
+          <DeviceToggle 
+            activeDevice={activeDevice} 
+            onDeviceChange={setActiveDevice} 
+          />
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
           {plans.map((plan, index) => (
             <div 
               key={index} 

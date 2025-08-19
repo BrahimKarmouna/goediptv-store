@@ -46,8 +46,8 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section id="features" className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="features" className="py-24 bg-background w-full overflow-hidden">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Waarom kiezen voor onze <span className="text-primary">IPTV service</span>?

@@ -20,7 +20,7 @@ export function HeroSection() {
     }
   };
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background to-muted/20 pt-20">
+    <section className="relative min-h-screen flex items-center justify-center w-full overflow-hidden bg-gradient-to-br from-background to-muted/20 pt-20">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5" />
@@ -38,8 +38,8 @@ export function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
-        <div className="max-w-3xl">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left overflow-hidden">
+        <div className="w-full max-w-3xl mx-auto px-2 sm:px-0">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/90 mb-6 leading-[1.1]">
             Premium IPTV
             <span className="block font-serif font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Subscriptions</span>

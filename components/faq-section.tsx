@@ -45,8 +45,8 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-    <section id="faq" className="py-24 bg-gradient-to-b from-background to-muted/10">
-      <div className="max-w-4xl mx-auto px-6 lg:px-8">
+    <section id="faq" className="py-24 bg-gradient-to-b from-background to-muted/10 w-full overflow-hidden">
+      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6">
             Frequently Asked <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Questions</span>
