@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.iptvkopen.nl/sitemap.xml
+
+# Crawl-delay: 10
+# Uncomment the above line if you want to limit crawl rate
+
+# Disallow crawling of admin and API routes
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*?*
+
+# Allow all other pages
+Allow: /*
+
+# Host
+Host: https://www.iptvkopen.nl

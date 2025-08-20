@@ -10,6 +10,7 @@ import { WhatsAppPopup } from './whatsapp-popup';
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showWhatsAppPopup, setShowWhatsAppPopup] = useState(false);
+  const [isNlIptvOpen, setIsNlIptvOpen] = useState(true);
   const [selectedPlan, setSelectedPlan] = useState({
     name: "Free Trial",
     period: "1 uur",
@@ -201,14 +202,66 @@ export function Navigation() {
             <div className="px-4 pt-2 pb-6 space-y-2">
               {[
                 { name: 'Home', href: '/', targetId: null },
+                { 
+                  name: 'Nl iptv', 
+                  isDropdown: true,
+                  items: [
+                    { name: 'Beste Nederlandse IPTV', href: '/beste-nederlandse-iptv-aanbieders' },
+                    { name: 'IPTV Kopen Gids', href: '/iptv-kopen-gids' },
+                    { name: 'Goedkope IPTV', href: '/goedkope-iptv-nederland' },
+                  ]
+                },
                 { name: 'Pricing', href: '/#pricing', targetId: '#pricing' },
                 { name: 'Features', href: '/#features', targetId: '#features' },
                 { name: 'Reviews', href: '/#testimonials', targetId: '#testimonials' },
                 { name: 'FAQ', href: '/#faq', targetId: '#faq' },
                 { name: 'Contact', href: '/#contact', targetId: '#contact' },
+                { name: 'Handleiding', href: '/handleiding', targetId: null },
               ].map((item) => (
                 <div key={item.name} className="border-b border-border/20 last:border-0">
-                  {item.targetId ? (
+                  {item.isDropdown ? (
+                    <div className="space-y-1">
+                      <div className="flex items-center">
+                        <Link 
+                          href="/beste-nederlandse-iptv-aanbieders"
+                          className="flex-1 px-4 py-3 text-foreground/80 hover:text-primary rounded-lg transition-colors text-left"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          <span className="font-medium">{item.name}</span>
+                        </Link>
+                        <button 
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setIsNlIptvOpen(!isNlIptvOpen);
+                          }}
+                          className="p-2 text-foreground/60 hover:text-primary transition-colors"
+                          aria-label="Toggle submenu"
+                        >
+                          <svg 
+                            className={`w-4 h-4 transition-transform ${isNlIptvOpen ? 'rotate-180' : ''}`} 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                      </div>
+                      <div className={`pl-4 space-y-1 overflow-hidden transition-all duration-200 ${isNlIptvOpen ? 'max-h-96' : 'max-h-0'}`}>
+                        {item.items.map((dropdownItem) => (
+                          <Link
+                            key={dropdownItem.name}
+                            href={dropdownItem.href}
+                            className="block px-4 py-2 text-sm text-foreground/70 hover:text-primary hover:bg-foreground/5 rounded-lg transition-colors"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {dropdownItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ) : item.targetId ? (
                     <div onClick={(e) => {
                       e.preventDefault();
                       setIsMenuOpen(false);
@@ -222,13 +275,11 @@ export function Navigation() {
                         }
                       }, 200);
                     }}>
-                      <NavLink 
-                        href={item.href}
-                        targetId={item.targetId}
+                      <div 
                         className="block px-4 py-3 text-foreground/80 hover:text-primary hover:bg-foreground/5 rounded-lg transition-colors cursor-pointer"
                       >
                         {item.name}
-                      </NavLink>
+                      </div>
                     </div>
                   ) : (
                     <Link 
@@ -270,23 +321,17 @@ export function Navigation() {
         
       </div>
       
-      {/* WhatsApp Popup */}
-      <div 
-        className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-opacity duration-300 ${showWhatsAppPopup ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-        onClick={handleWhatsAppBackdropClick}
-      >
-        <div className="fixed inset-0 bg-black/30" />
-        <div className="relative z-50 w-full max-w-lg">
-          <WhatsAppPopup 
-            isOpen={showWhatsAppPopup}
-            onClose={closeWhatsAppPopup}
-            planName={selectedPlan.name}
-            period={selectedPlan.period}
-            devices={selectedPlan.devices}
-            isTrial={selectedPlan.isTrial}
-          />
-        </div>
-      </div>
+{/* WhatsApp Popup */}
+      {showWhatsAppPopup && (
+        <WhatsAppPopup 
+          isOpen={showWhatsAppPopup}
+          onClose={closeWhatsAppPopup}
+          planName={selectedPlan.name}
+          period={selectedPlan.period}
+          devices={selectedPlan.devices}
+          isTrial={selectedPlan.isTrial}
+        />
+      )}
     </nav>
   )
 }

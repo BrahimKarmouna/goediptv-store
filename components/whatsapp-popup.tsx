@@ -52,13 +52,53 @@ export function WhatsAppPopup({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100vw',
+      height: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 10001,
+      padding: '1rem',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      backdropFilter: 'blur(4px)',
+      opacity: isOpen ? 1 : 0,
+      pointerEvents: isOpen ? 'auto' : 'none',
+      transition: 'opacity 300ms ease-in-out'
+    }}>
       <div 
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-200"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 1
+        }}
         onClick={handleBackdropClick}
         aria-hidden="true"
       />
-      <div className="relative z-10 w-full max-w-md bg-background rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-300">
+      <div style={{
+        position: 'relative',
+        zIndex: 2,
+        width: '100%',
+        maxWidth: '32rem',
+        backgroundColor: 'hsl(var(--background))',
+        borderRadius: '1rem',
+        overflow: 'hidden',
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+        transform: 'translateY(0)',
+        opacity: 1,
+        transition: 'opacity 300ms ease-in-out, transform 300ms ease-in-out',
+        margin: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+        maxHeight: '90vh',
+        overflowY: 'auto'
+      }}>
         {/* Popup Header */}
         <div className="p-6">
           <div className="flex items-center justify-between mb-4">
@@ -102,7 +142,7 @@ export function WhatsAppPopup({
           </a>
 
           <div className="text-center">
-            <p className="text-sm text-muted-foreground mb-3">Or copy our WhatsApp number:</p>
+            <p className="text-sm text-muted-foreground mb-3">Of kopieer ons WhatsApp-nummer:</p>
             <div className="flex items-center justify-center space-x-2">
               <div className="bg-muted/50 px-4 py-2 rounded-lg font-mono text-foreground">
                 {phoneNumber}
@@ -110,12 +150,20 @@ export function WhatsAppPopup({
               <button
                 type="button"
                 onClick={handleCopyNumber}
-                className="p-2 text-muted-foreground hover:text-foreground transition-colors"
-                title="Copy to clipboard"
-                aria-label="Copy phone number"
+                className="p-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer relative group"
+                title="Kopieer nummer"
+                aria-label="Kopieer telefoonnummer"
               >
-                <Copy className="w-5 h-5" />
-                {copied && <span className="sr-only">Copied!</span>}
+                <Copy className={`w-5 h-5 transition-all duration-200 ${copied ? 'scale-0 absolute' : 'scale-100'}`} />
+                <div 
+                  className={`absolute inset-0 flex items-center justify-center text-green-500 transition-all duration-200 ${copied ? 'scale-100' : 'scale-0'}`}
+                  style={{ width: '1.25rem', height: '1.25rem' }}
+                >
+                  ✓
+                </div>
+                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-foreground text-background text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  {copied ? 'Gekopieerd!' : 'Klik om te kopiëren'}
+                </div>
               </button>
             </div>
           </div>
