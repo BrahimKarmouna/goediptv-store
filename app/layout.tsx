@@ -20,6 +20,13 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.iptvkopen.nl'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'nl-NL': '/nl-NL',
+    },
+  },
   title: {
     default: "IPTV Kopen | Beste Nederlandse IPTV Abonnementen 2024",
     template: "%s | IPTV Kopen Nederland"
@@ -33,13 +40,6 @@ export const metadata: Metadata = {
   applicationName: "IPTV Kopen Nederland",
   authors: [{ name: "IPTV Kopen" }],
   generator: "Next.js",
-  metadataBase: new URL('https://www.iptvkopen.nl'),
-  alternates: {
-    canonical: '/',
-    languages: {
-      'nl-NL': '/nl-NL',
-    },
-  },
   openGraph: {
     title: 'Beste IPTV Abonnementen van Nederland | IPTV Kopen',
     description: 'Vergelijk en kies het beste IPTV abonnement met Nederlandse zenders, sport, films en series. Eenvoudige installatie en 24/7 support.',
