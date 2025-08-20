@@ -22,9 +22,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.iptvkopen.nl'),
   alternates: {
-    canonical: '/',
+    canonical: 'https://www.iptvkopen.nl',
     languages: {
-      'nl-NL': '/nl-NL',
+      'nl-NL': 'https://www.iptvkopen.nl/nl-NL',
     },
   },
   title: {
