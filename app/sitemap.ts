@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.iptvkopen.nl';
+  const baseUrl = 'https://dutchiptv.de';
   const currentDate = new Date();
 
   // Home and main category pages (highest priority)
