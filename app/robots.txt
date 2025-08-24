@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.iptvkopen.nl/sitemap.xml
+Sitemap: https://dutchiptv.de/sitemap.xml
 
 # Crawl-delay: 10
 # Uncomment the above line if you want to limit crawl rate
@@ -15,4 +15,4 @@ Disallow: /*?*
 Allow: /*
 
 # Host
-Host: https://www.iptvkopen.nl
+Host: https://dutchiptv.de
