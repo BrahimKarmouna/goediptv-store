@@ -1,4 +1,7 @@
-import { MetadataRoute } from 'next';
+import { MetadataRoute } from 'next'
+
+// This file is no longer used as the main sitemap endpoint
+// The sitemap is now served from /api/sitemap;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://dutchiptv.de';
