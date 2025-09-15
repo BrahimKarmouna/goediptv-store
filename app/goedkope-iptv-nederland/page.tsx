@@ -9,10 +9,10 @@ import { WhatsAppPopup } from '@/components/whatsapp-popup';
 const plans = [
   {
     name: "1 Jaar",
-    originalPrice: "€79.98",
-    discountedPrice: "€59.99",
+    originalPrice: "€89,98",
+    discountedPrice: "€69,99",
     period: "1 jaar",
-    periodLabel: "1jr/€59,99",
+    periodLabel: "1jr/€69,99",
     description: "Beste keuze!",
     icon: Crown,
     features: [
@@ -29,10 +29,10 @@ const plans = [
   },
   {
     name: "6 Maanden",
-    originalPrice: "€47.94",
-    discountedPrice: "€39.99",
+    originalPrice: "€57,94",
+    discountedPrice: "€49,99",
     period: "6 maanden",
-    periodLabel: "6mnd/€39,99",
+    periodLabel: "6mnd/€49,99",
     description: "Voordelige keuze",
     icon: Star,
     features: [
@@ -48,10 +48,10 @@ const plans = [
   },
   {
     name: "3 Maanden",
-    originalPrice: "€29.97",
-    discountedPrice: "€24.99",
+    originalPrice: "€39,97",
+    discountedPrice: "€34,99",
     period: "3 maanden",
-    periodLabel: "3mnd/€24,99",
+    periodLabel: "3mnd/€34,99",
     description: "Flexibel abonnement",
     icon: Zap,
     features: [
@@ -66,20 +66,21 @@ const plans = [
     cta: "Nu starten"
   },
   {
-    name: "Gratis Proef",
-    price: "Gratis",
-    period: "1 uur",
-    periodLabel: "Gratis Proef",
+    name: "1 Maand",
+    originalPrice: "€29,99",
+    discountedPrice: "€19,99",
+    period: "1 maand",
+    periodLabel: "1mnd/€19,99",
     description: "Probeer eerst",
     icon: Sparkles,
     features: [
       "Werkt op alle apparaten",
-      "Toegang tot alle kanalen",
+      "+75.000 films & series",
       "24/7 Nederlandse klantenservice",
       "HD & Full HD kwaliteit",
-      "Geen creditcard nodig"
+      "Internationaal pakket met +21.000 IPTV kanalen"
     ],
-    cta: "Nu proberen"
+    cta: "Nu starten"
   }
 ];
 
@@ -136,7 +137,7 @@ export default function GoedkopeIptvNederland() {
             Goedkope IPTV in Nederland
           </h1>
           <p className="text-sm text-muted-foreground text-center mb-8">
-            Alle prijzen zijn inclusief BTW. Geen verborgen kosten. 1 uur gratis proberen.
+            Alle prijzen zijn inclusief BTW. Geen verborgen kosten. Start vanaf €19,99 per maand.
           </p>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Meer dan 10.000 kanalen, inclusief alle Nederlandse zenders in HD-kwaliteit.
@@ -145,9 +146,9 @@ export default function GoedkopeIptvNederland() {
             <Button 
               size="lg" 
               className="bg-primary hover:bg-primary/90"
-              onClick={() => handleWhatsAppClick('Gratis Proef')}
+              onClick={() => handleWhatsAppClick('1 Maand')}
             >
-              Probeer nu 1 uur gratis
+              Start vanaf €19,99 / maand
               <Zap className="ml-2 w-4 h-4" />
             </Button>
             <Button 
@@ -172,7 +173,7 @@ export default function GoedkopeIptvNederland() {
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Kies het perfecte IPTV-abonnement</h2>
             <p className="text-lg text-muted-foreground">
-              Alle abonnementen inclusief 1 uur gratis proefperiode. Geen creditcard nodig, direct starten!
+              Kies de looptijd die bij je past. Directe activatie, geen contracten, 24/7 support.
             </p>
             <p className="mt-4 text-sm text-muted-foreground">
               Geen verborgen kosten - Wat je ziet is wat je betaalt, zonder extra kosten voor HD of meerkijken.
@@ -182,7 +183,7 @@ export default function GoedkopeIptvNederland() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {plans.map((plan, index) => {
               const Icon = plan.icon;
-              const isFreeTrial = plan.name === 'Gratis Proef';
+              const isFreeTrial = false;
               
               return (
                 <div
@@ -218,18 +219,12 @@ export default function GoedkopeIptvNederland() {
 
                   <div className="text-center mb-6">
                     <div className="flex items-baseline justify-center gap-2">
-                      {plan.discountedPrice ? (
-                        <>
-                          <span className="text-4xl font-bold text-foreground">
-                            {plan.discountedPrice}
-                          </span>
-                          <span className="text-sm text-muted-foreground line-through">
-                            {plan.originalPrice}
-                          </span>
-                        </>
-                      ) : (
-                        <span className="text-4xl font-bold text-foreground">
-                          {plan.price}
+                      <span className="text-4xl font-bold text-foreground">
+                        {plan.discountedPrice}
+                      </span>
+                      {plan.originalPrice && (
+                        <span className="text-sm text-muted-foreground line-through">
+                          {plan.originalPrice}
                         </span>
                       )}
                     </div>
@@ -263,25 +258,23 @@ export default function GoedkopeIptvNederland() {
                     size="lg"
                     onClick={() => handleWhatsAppClick(plan.name)}
                   >
-                    {isFreeTrial ? 'Nu proberen' : 'Nu starten'}
+                    Nu starten
                     <Zap className="ml-2 w-4 h-4" />
                   </Button>
                   
-                  {!isFreeTrial && (
-                    <Button
-                      variant="outline"
-                      className="w-full h-10 text-sm text-muted-foreground hover:text-foreground mt-3"
-                      onClick={() => {
-                        const featuresSection = document.getElementById('features');
-                        if (featuresSection) {
-                          featuresSection.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }}
-                    >
-                      <Info className="w-4 h-4 mr-2" />
-                      Meer informatie
-                    </Button>
-                  )}
+                  <Button
+                    variant="outline"
+                    className="w-full h-10 text-sm text-muted-foreground hover:text-foreground mt-3"
+                    onClick={() => {
+                      const featuresSection = document.getElementById('features');
+                      if (featuresSection) {
+                        featuresSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    <Info className="w-4 h-4 mr-2" />
+                    Meer informatie
+                  </Button>
                 </div>
               );
             })}

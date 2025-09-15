@@ -5,7 +5,12 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Check, Crown, Star, Zap, X, MessageCircle, Sparkles } from "lucide-react"
 
-const DeviceToggle = ({ activeDevice, onDeviceChange }) => {
+type DeviceToggleProps = {
+  activeDevice: '1' | '2' | '3' | 'unlimited';
+  onDeviceChange: (id: '1' | '2' | '3' | 'unlimited') => void;
+};
+
+const DeviceToggle = ({ activeDevice, onDeviceChange }: DeviceToggleProps) => {
   const devices = [
     { id: '1', label: '1 Apparaat' },
     { id: '2', label: '2 Apparaten' },
@@ -32,13 +37,27 @@ const DeviceToggle = ({ activeDevice, onDeviceChange }) => {
   );
 };
 
-const plans = [
+type Plan = {
+  name: string;
+  originalPrice?: string;
+  discountedPrice?: string;
+  period: string;
+  periodLabel?: string;
+  description?: string;
+  icon: any;
+  features: string[];
+  popular: boolean;
+  cta: string;
+  bestValue?: boolean;
+};
+
+const plans: Plan[] = [
   {
     name: "1 Jaar",
-    originalPrice: "€59.99",
-    discountedPrice: "€59.99",
+    originalPrice: "€69,99",
+    discountedPrice: "€69,99",
     period: "1 jaar",
-    periodLabel: "1jr/€59,99",
+    periodLabel: "1jr/€69,99",
     description: "Beste keuze!",
     icon: Crown,
     
@@ -56,10 +75,10 @@ const plans = [
   },
   {
     name: "6 Maanden",
-    originalPrice: "€79.98",
-    discountedPrice: "€39.99",
+    originalPrice: "€89,98",
+    discountedPrice: "€49,99",
     period: "6 maanden",
-    periodLabel: "6mnd/€39,99",
+    periodLabel: "6mnd/€49,99",
     description: "Voordelige keuze",
     icon: Star,
     features: [
@@ -75,10 +94,10 @@ const plans = [
   },
   {
     name: "3 Maanden",
-    originalPrice: "€49.98",
-    discountedPrice: "€24.99",
+    originalPrice: "€59,98",
+    discountedPrice: "€34,99",
     period: "3 maanden",
-    periodLabel: "3mnd/€24,99",
+    periodLabel: "3mnd/€34,99",
     description: "Flexibel abonnement",
     icon: Zap,
     features: [
@@ -93,23 +112,23 @@ const plans = [
     cta: "Nu starten"
   },
   {
-    name: "Gratis Proef",
-    price: "Gratis",
-    period: "1 uur",
-    periodLabel: "Gratis Proef",
+    name: "1 Maand",
+    originalPrice: "€29,99",
+    discountedPrice: "€19,99",
+    period: "1 maand",
+    periodLabel: "1mnd/€19,99",
     description: "Probeer eerst",
     icon: Sparkles,
     features: [
       "Werkt op alle apparaten",
-      "Toegang tot alle kanalen",
+      "+75.000 films & series",
       "24/7 Nederlandse klantenservice",
       "HD & Full HD kwaliteit",
-      "Geen creditcard nodig",
+      "Internationaal pakket met +21.000 IPTV kanalen",
       "Directe activatie"
     ],
     popular: false,
-    cta: "Probeer nu 1 uur gratis",
-    isTrial: true
+    cta: "Nu starten"
   }
 ]
 
@@ -251,10 +270,9 @@ export default function PricingSection() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, []);
 
-  const getPrice = (plan) => {
-    if (plan.isTrial) return plan.price;
+  const getPrice = (plan: Plan) => {
     
-    let price = parseFloat(plan.discountedPrice.replace('€', '').replace(',', '.'));
+    let price = parseFloat((plan.discountedPrice || '0').replace('€', '').replace(',', '.'));
     
     // Apply device multiplier
     if (activeDevice === '1') {
@@ -270,7 +288,7 @@ export default function PricingSection() {
     return `€${price.toFixed(2).replace('.', ',')}`;
   };
 
-  const getDeviceCountLabel = () => {
+  const getDeviceCountLabel = (): string => {
     if (activeDevice === '1') return '1 Apparaat';
     if (activeDevice === '2') return '2 Apparaten';
     if (activeDevice === '3') return '3 Apparaten';
@@ -342,25 +360,17 @@ export default function PricingSection() {
                   }`}>
                     {plan.name}
                   </CardTitle>
-                  {!plan.isTrial && (
-                    <div className="flex items-end justify-center mt-4 space-x-1">
-                      <span className="text-4xl font-bold text-foreground">
-                        {getPrice(plan)}
-                      </span>
-                      <span className="text-muted-foreground text-sm mb-1.5">
-                        /{plan.period.split(' ')[0]}
-                      </span>
-                    </div>
-                  )}
-                  {plan.isTrial ? (
-                    <p className="text-2xl font-bold text-foreground text-center mt-2">
-                      {plan.price}
-                    </p>
-                  ) : (
-                    <p className="text-sm text-muted-foreground text-center mb-8">
-                      Probeer 1 uur gratis uit. Geen creditcard nodig. Geen verplichtingen.
-                    </p>
-                  )}
+                  <div className="flex items-end justify-center mt-4 space-x-1">
+                    <span className="text-4xl font-bold text-foreground">
+                      {getPrice(plan)}
+                    </span>
+                    <span className="text-muted-foreground text-sm mb-1.5">
+                      /{plan.period.split(' ')[0]}
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground text-center mb-8">
+                    Directe activatie. Geen contracten. 24/7 support.
+                  </p>
                   {plan.description && (
                     <p className={`text-sm text-center mt-2 ${
                       plan.bestValue ? 'text-amber-500 font-medium' : 'text-primary font-medium'

@@ -1,10 +1,7 @@
 import { MetadataRoute } from 'next'
 
-// This file is no longer used as the main sitemap endpoint
-// The sitemap is now served from /api/sitemap;
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://dutchiptv.de';
+  const baseUrl = 'https://www.iptvkopen.nl';
   const currentDate = new Date();
 
   // Home and main category pages (highest priority)

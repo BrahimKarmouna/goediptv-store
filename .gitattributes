@@ -1,0 +1,32 @@
+# Normalize text files to LF in repo; convert on checkout based on core.autocrlf
+* text=auto
+.gitattributes -text
+
+# Force LF endings for source files
+*.ts text eol=lf
+*.tsx text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.md text eol=lf
+*.mdx text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.html text eol=lf
+*.mjs text eol=lf
+*.cjs text eol=lf
+
+# Treat images and media as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg text eol=lf
+*.webp binary
+*.ico binary
+
+# Do not normalize lockfiles (use as generated)
+package-lock.json -text
+pnpm-lock.yaml -text

@@ -18,18 +18,14 @@ export function WhatsAppPopup({
   planName = 'Starter',
   period = '1 maand',
   devices = 1,
-  isTrial = true
+  isTrial = false
 }: WhatsAppPopupProps) {
   const [copied, setCopied] = useState(false);
   const [message, setMessage] = useState('');
   
   useEffect(() => {
-    if (isTrial) {
-      setMessage(`Hallo, ik wil graag een gratis proefperiode starten met IPTV Kopen.\n\nAantal apparaten: ${devices} apparaat${devices > 1 ? 'en' : ''}`);
-    } else {
-      setMessage(`Hallo, ik wil graag het volgende bestellen:\n\n- Abonnement: ${planName}\n- Aantal apparaten: ${devices} apparaat${devices > 1 ? 'en' : ''}\n\nKunt u mij hier meer over vertellen?`);
-    }
-  }, [planName, period, devices, isTrial]);
+    setMessage(`Hallo, ik wil graag het volgende bestellen:\n\n- Abonnement: ${planName}\n- Looptijd: ${period}\n- Aantal apparaten: ${devices} apparaat${devices > 1 ? 'en' : ''}\n\nKunt u mij hier meer over vertellen?`);
+  }, [planName, period, devices]);
   
   const whatsappUrl = `https://wa.me/3197010270035?text=${encodeURIComponent(message)}`;
   const phoneNumber = '+31 970 102 7003';
@@ -102,7 +98,7 @@ export function WhatsAppPopup({
         {/* Popup Header */}
         <div className="p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xl font-bold text-foreground">Start Your Free Trial</h3>
+            <h3 className="text-xl font-bold text-foreground">Neem contact op via WhatsApp</h3>
             <div 
               className="absolute right-4 top-4 p-1 rounded-full hover:bg-foreground/5 transition-colors cursor-pointer"
               onClick={onClose}
@@ -113,21 +109,16 @@ export function WhatsAppPopup({
           </div>
           
           <p className="text-muted-foreground mb-6">
-            {isTrial 
-              ? 'Contact ons op WhatsApp om je gratis proefperiode te starten'
-              : `Bevestig je ${planName} abonnement`
-            }
+            We reageren binnen enkele minuten. Vermeld je voorkeuren en wij helpen je direct verder.
           </p>
           
           <div className="bg-muted/30 rounded-xl p-4 mb-6 space-y-2">
             <p className="text-sm text-muted-foreground">{message}</p>
-            {!isTrial && (
-              <div className="mt-2 space-y-1">
-                <p className="text-xs text-muted-foreground">• Abonnement: {planName}</p>
-                <p className="text-xs text-muted-foreground">• Looptijd: {period}</p>
-                <p className="text-xs text-muted-foreground">• Aantal apparaten: {devices}</p>
-              </div>
-            )}
+            <div className="mt-2 space-y-1">
+              <p className="text-xs text-muted-foreground">• Abonnement: {planName}</p>
+              <p className="text-xs text-muted-foreground">• Looptijd: {period}</p>
+              <p className="text-xs text-muted-foreground">• Aantal apparaten: {devices}</p>
+            </div>
           </div>
           
           <a

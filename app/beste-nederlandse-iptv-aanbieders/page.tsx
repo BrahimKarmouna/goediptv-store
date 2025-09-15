@@ -11,10 +11,10 @@ import { WhatsAppPopup } from '@/components/whatsapp-popup';
 const plans = [
   {
     name: "1 Jaar",
-    originalPrice: "€79.98",
-    discountedPrice: "€59.99",
+    originalPrice: "€89,98",
+    discountedPrice: "€69,99",
     period: "1 jaar",
-    periodLabel: "1jr/€59,99",
+    periodLabel: "1jr/€69,99",
     description: "Beste keuze!",
     icon: Crown,
     features: [
@@ -31,10 +31,10 @@ const plans = [
   },
   {
     name: "6 Maanden",
-    originalPrice: "€47.94",
-    discountedPrice: "€39.99",
+    originalPrice: "€57,94",
+    discountedPrice: "€49,99",
     period: "6 maanden",
-    periodLabel: "6mnd/€39,99",
+    periodLabel: "6mnd/€49,99",
     description: "Voordelige keuze",
     icon: Star,
     features: [
@@ -50,10 +50,10 @@ const plans = [
   },
   {
     name: "3 Maanden",
-    originalPrice: "€29.97",
-    discountedPrice: "€24.99",
+    originalPrice: "€39,97",
+    discountedPrice: "€34,99",
     period: "3 maanden",
-    periodLabel: "3mnd/€24,99",
+    periodLabel: "3mnd/€34,99",
     description: "Flexibel abonnement",
     icon: Zap,
     features: [
@@ -68,20 +68,21 @@ const plans = [
     cta: "Nu starten"
   },
   {
-    name: "Gratis Proef",
-    price: "Gratis",
-    period: "1 uur",
-    periodLabel: "Gratis Proef",
+    name: "1 Maand",
+    originalPrice: "€29,99",
+    discountedPrice: "€19,99",
+    period: "1 maand",
+    periodLabel: "1mnd/€19,99",
     description: "Probeer eerst",
     icon: Sparkles,
     features: [
       "Werkt op alle apparaten",
-      "Toegang tot alle kanalen",
+      "+75.000 films & series",
       "24/7 Nederlandse klantenservice",
       "HD & Full HD kwaliteit",
-      "Geen creditcard nodig"
+      "Internationaal pakket met +21.000 IPTV kanalen"
     ],
-    cta: "Nu proberen"
+    cta: "Nu starten"
   }
 ];
 
@@ -126,12 +127,12 @@ export default function BesteNederlandseIptvAanbieders() {
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Ontdek de meest betrouwbare en voordelige IPTV-aanbieders voor Nederlands publiek. 
-            Kies uit onze topselectie, probeer 1 uur gratis en geniet van onbeperkt tv-plezier.
+            Start al vanaf €19,99 per maand en geniet van onbeperkt tv-plezier.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-              <Link href="/proefabonnement">
-                Probeer nu 1 uur gratis
+              <Link href="#pricing">
+                Start vanaf €19,99 / maand
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
@@ -171,14 +172,14 @@ export default function BesteNederlandseIptvAanbieders() {
               Kies je abonnement
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Kies het abonnement dat het beste bij je past. Probeer nu 1 uur gratis!
+              Kies het abonnement dat het beste bij je past. Start vanaf €19,99 per maand.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto px-4">
             {plans.map((plan) => {
               const Icon = plan.icon;
-              const isFreeTrial = plan.name === 'Gratis Proef';
+              const isFreeTrial = false;
               
               return (
                 <div
@@ -214,18 +215,12 @@ export default function BesteNederlandseIptvAanbieders() {
 
                   <div className="text-center mb-8">
                     <div className="flex items-baseline justify-center gap-2">
-                      {plan.discountedPrice ? (
-                        <>
-                          <span className="text-4xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                            {plan.discountedPrice}
-                          </span>
-                          <span className="text-sm text-muted-foreground line-through">
-                            {plan.originalPrice}
-                          </span>
-                        </>
-                      ) : (
-                        <span className="text-4xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                          {plan.price}
+                      <span className="text-4xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                        {plan.discountedPrice}
+                      </span>
+                      {plan.originalPrice && (
+                        <span className="text-sm text-muted-foreground line-through">
+                          {plan.originalPrice}
                         </span>
                       )}
                     </div>
@@ -254,7 +249,7 @@ export default function BesteNederlandseIptvAanbieders() {
                     <Button
                       className={`w-full h-12 text-base font-semibold ${
                         plan.popular 
-                          ? 'bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 shadow-lg shadow-primary/20'
+                          ? 'bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 shadow-lg shadow-primary/20' 
                           : 'bg-foreground hover:bg-foreground/90 text-background'
                       }`}
                       size="lg"
@@ -263,7 +258,7 @@ export default function BesteNederlandseIptvAanbieders() {
                         setShowWhatsAppPopup(true);
                       }}
                     >
-                      {isFreeTrial ? 'Nu proberen' : 'Nu starten'}
+                      Nu starten
                       <Zap className="ml-2 w-4 h-4" />
                     </Button>
                     
@@ -366,6 +361,7 @@ export default function BesteNederlandseIptvAanbieders() {
         isOpen={showWhatsAppPopup} 
         onClose={() => setShowWhatsAppPopup(false)}
         planName={selectedPlan}
+        isTrial={false}
       />
       
       {/* Add a hidden anchor for the pricing section */}

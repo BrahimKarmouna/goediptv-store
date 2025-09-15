@@ -1,135 +1,121 @@
 "use client"
 
-import { useState } from 'react';
 import { Button } from "@/components/ui/button"
-import { Play, Shield, Tv } from "lucide-react"
+import { Play, Tv, Check } from "lucide-react"
 import { NavLink } from "./ui/nav-link"
-import { WhatsAppPopup } from "./whatsapp-popup"
 
 export function HeroSection() {
-  const [showWhatsAppPopup, setShowWhatsAppPopup] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState("Free Trial");
-
-  const closeWhatsAppPopup = () => {
-    setShowWhatsAppPopup(false);
-  };
-
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      closeWhatsAppPopup();
-    }
-  };
   return (
-    <section className="relative min-h-screen flex items-center justify-center w-full overflow-hidden bg-gradient-to-br from-background to-muted/20 pt-20">
+    <section className="relative w-full overflow-hidden bg-gradient-to-b from-background to-muted/10 pt-24 pb-16 min-h-[90vh]">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5" />
+        {/* Subtle background image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-110 transition-transform duration-1000 ease-in-out hover:scale-100"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url('https://i.ibb.co/B2jH9n35/TV.png')`,
             backgroundPosition: 'center',
             backgroundSize: 'cover',
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-background/20 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+          {/* Gradient overlays for readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background/30" />
         </div>
+        {/* Faint grid on top */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-[0.04] pointer-events-none" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left overflow-hidden">
-        <div className="w-full max-w-3xl mx-auto px-2 sm:px-0">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/90 mb-6 leading-[1.1]">
-            Premium IPTV
-            <span className="block font-serif font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Subscriptions</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-foreground/90 mb-10 leading-relaxed max-w-3xl font-sans">
-            Stream over <span className="font-semibold text-primary">20,000+ live channels</span> in stunning 4K quality. 
-            From sports to movies, news to entertainment — all in one place. Start your <span className="font-semibold">7-day free trial</span> today.
-          </p>
-
-          {/* Features highlights */}
-          <div className="flex flex-wrap gap-6 mb-10">
-            {[
-              { icon: <Tv className="w-6 h-6" />, text: '20,000+ Channels' },
-              { icon: <Play className="w-6 h-6" />, text: '4K Ultra HD' },
-              { icon: <Shield className="w-6 h-6" />, text: '7-Day Free Trial' },
-              { icon: <div className="w-6 h-6 flex items-center justify-center">⏱️</div>, text: 'Catch-up TV' },
-              { icon: <div className="w-6 h-6 flex items-center justify-center">📱</div>, text: 'Multi-Device' }
-            ].map((feature, index) => (
-              <div 
-                key={index}
-                className="flex items-center gap-2 px-4 py-2 bg-background/50 backdrop-blur-sm rounded-lg border border-border/50 hover:border-primary/30 transition-all duration-300"
-              >
-                <span className="text-primary">{feature.icon}</span>
-                <span className="text-sm font-medium">{feature.text}</span>
-              </div>
-            ))}
+      {/* Content */
+      }
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          {/* Left column */}
+          <div className="w-full max-w-2xl">
+            <div className="inline-flex items-center gap-3 rounded-full border border-border/60 bg-background/70 backdrop-blur px-4 py-2 text-sm sm:text-base text-muted-foreground mb-5 shadow-sm">
+              <span className="inline-flex items-center gap-1 text-primary"><Tv className="w-4 h-4" /> 31.000+ zenders</span>
+              <span className="w-px h-4 bg-border/50" />
+              <span>4K/Full HD</span>
+              <span className="w-px h-4 bg-border/50" />
+              <span>Direct actief</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-5 leading-tight">
+              Premium IPTV, direct actief
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground mb-7 max-w-xl">
+              Kijk sport, films en series zonder haperingen op elk apparaat. Geen contracten, geen gedoe.
+            </p>
+            <ul className="mb-9 grid grid-cols-1 sm:grid-cols-2 gap-3 text-base text-foreground/90">
+              {[
+                '15.000+ kanalen + VOD',
+                'Werkt op TV, mobiel, tablet',
+                'Eenvoudig installeren',
+                'Nederlandse klantenservice',
+              ].map((t, i) => (
+                <li key={i} className="flex items-center gap-2">
+                  <Check className="w-5 h-5 text-primary" />
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="flex flex-col sm:flex-row gap-4 max-w-xl">
+              <NavLink href="/#pricing" targetId="#pricing" className="w-full sm:w-auto">
+                <Button 
+                  size="lg"
+                  className="w-full text-lg h-14 px-8 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground hover:from-primary/95 hover:to-primary/80 shadow-lg hover:shadow-primary/30 transition cursor-pointer group"
+                >
+                  <Play className="w-5 h-5 mr-2 transition-transform group-hover:translate-x-0.5" /> Bestel nu
+                </Button>
+              </NavLink>
+              <NavLink href="/#pricing" targetId="#pricing" className="w-full sm:w-auto">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="w-full text-lg h-14 px-8 border-2 border-border/60 hover:border-primary/60 bg-background/60 backdrop-blur hover:bg-background/80 shadow-sm transition cursor-pointer group"
+                >
+                  <span className="transition-transform group-hover:translate-x-0.5">Bekijk prijzen</span>
+                </Button>
+              </NavLink>
+            </div>
+            <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
+              <span className="inline-flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500" /> 24/7 support</span>
+              <span className="w-px h-4 bg-border/50" />
+              <span>Veilig betalen</span>
+              <span className="w-px h-4 bg-border/50" />
+              <span>Annuleer wanneer je wilt</span>
+            </div>
           </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md">
-            <Button 
-              size="lg" 
-              onClick={(e) => {
-                e.preventDefault();
-                setShowWhatsAppPopup(true);
-                // Smooth scroll to pricing section
-                const pricingSection = document.querySelector('#pricing');
-                if (pricingSection) {
-                  pricingSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="w-full text-lg px-8 py-7 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 shadow-lg hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300 group cursor-pointer"
-            >
-              <Play className="w-6 h-6 mr-2 group-hover:translate-x-1 transition-transform" />
-              Start Free Trial
-            </Button>
-            <NavLink href="/#pricing" targetId="#pricing" className="w-full sm:w-auto">
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full text-lg px-8 py-7 border-2 border-border/50 hover:border-primary/50 bg-background/50 backdrop-blur-sm hover:bg-background/80 transition-all duration-300 group cursor-pointer"
-              >
-                <span className="group-hover:translate-x-1 transition-transform">View Pricing</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 group-hover:translate-x-1 transition-transform">
-                  <path d="M5 12h14"></path>
-                  <path d="m12 5 7 7-7 7"></path>
-                </svg>
-              </Button>
-            </NavLink>
-          </div>
-          
-          {/* Trust indicators */}
-          <div className="mt-12 flex flex-col sm:flex-row items-center gap-6 text-sm text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-8 h-8 rounded-full bg-primary/10 border-2 border-background flex items-center justify-center text-xs font-bold">
-                    {i === 4 ? '+' : i}
-                  </div>
+          {/* Right column */}
+          <div className="hidden md:block">
+            <div className="relative rounded-2xl border border-border/60 bg-background/50 backdrop-blur p-7 shadow-lg">
+              <div className="grid grid-cols-3 gap-4">
+                {[
+                  { label: '12 maanden', price: '€69,99' },
+                  { label: '6 maanden', price: '€49,99' },
+                  { label: '3 maanden', price: '€34,99' },
+                ].map((p, i) => (
+                  <NavLink key={i} href="/#pricing" targetId="#pricing" className="block">
+                    <div className="rounded-xl border border-border/50 bg-background/70 hover:border-primary/60 hover:shadow-md transition p-5 cursor-pointer">
+                      <p className="text-sm text-muted-foreground">{p.label}</p>
+                      <p className="text-xl font-semibold text-foreground">{p.price}</p>
+                    </div>
+                  </NavLink>
                 ))}
               </div>
-              <span>Trusted by 10,000+ users</span>
-            </div>
-            <div className="hidden sm:block w-px h-6 bg-border/50" />
-            <div className="flex items-center gap-2">
-              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-green-500/10 text-green-500">
-                ✓
-              </div>
-              <span>24/7 Customer Support</span>
+              <NavLink href="/#pricing" targetId="#pricing" className="block">
+                <div className="mt-6 rounded-xl border border-border/50 bg-background/80 p-5 hover:border-primary/60 hover:bg-background/90 hover:shadow-md transition cursor-pointer">
+                  <p className="text-sm text-muted-foreground">Populaire keuze</p>
+                  <p className="text-3xl font-bold text-foreground">1 jaar • €69,99</p>
+                  <p className="text-sm text-muted-foreground mt-1">Directe activatie • HD/4K • 24/7 support</p>
+                </div>
+              </NavLink>
             </div>
           </div>
         </div>
       </div>
       
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2 animate-pulse" />
-        </div>
-      </div>
+      {/* Decorative bottom spacer */}
     </section>
   )
 }

@@ -1,5 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
+import Script from "next/script"
 import { Playfair_Display } from "next/font/google"
 import { Inter } from "next/font/google"
 import "./globals.css"
@@ -78,7 +79,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="nl" className={`${playfair.variable} ${inter.variable} dark`} itemScope itemType="http://schema.org/WebPage">
-      <body className="font-sans antialiased bg-background text-foreground">{children}</body>
+      <body className="font-sans antialiased bg-background text-foreground">
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-GYK0Q72GPD"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-GYK0Q72GPD', { page_path: window.location.pathname });
+          `}
+        </Script>
+        {children}
+      </body>
     </html>
   )
 }
