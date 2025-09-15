@@ -12,10 +12,10 @@ export function Navigation() {
   const [showWhatsAppPopup, setShowWhatsAppPopup] = useState(false);
   const [isNlIptvOpen, setIsNlIptvOpen] = useState(true);
   const [selectedPlan, setSelectedPlan] = useState({
-    name: "Free Trial",
-    period: "1 uur",
+    name: "1 Maand",
+    period: "1 maand",
     devices: 1,
-    isTrial: true
+    isTrial: false
   });
 
   const closeWhatsAppPopup = () => {
@@ -96,7 +96,7 @@ export function Navigation() {
               { name: 'Reviews', href: '/#testimonials', targetId: '#testimonials' },
               { name: 'FAQ', href: '/#faq', targetId: '#faq' },
               { name: 'Contact', href: '/#contact', targetId: '#contact' },
-              { name: 'Handleiding', href: '/handleiding', targetId: null },
+              { name: 'IPTV Kopen', href: '/iptv-kopen', targetId: null },
             ].map((item) => (
               item.isDropdown ? (
                 <div key={item.name} className="relative group">
@@ -111,7 +111,7 @@ export function Navigation() {
                       {item.items.map((dropdownItem) => (
                         <Link
                           key={dropdownItem.name}
-                          href={dropdownItem.href}
+                          href={dropdownItem.href ?? "/"}
                           className="block px-4 py-2 text-sm text-foreground/80 hover:bg-foreground/5 hover:text-primary transition-colors"
                         >
                           {dropdownItem.name}
@@ -132,7 +132,7 @@ export function Navigation() {
               ) : (
                 <Link 
                   key={item.name}
-                  href={item.href}
+                  href={item.href ?? "/"}
                   className="px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors rounded-full hover:bg-foreground/5"
                 >
                   {item.name}
@@ -152,26 +152,19 @@ export function Navigation() {
               <Phone className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
               <span className="text-foreground/80 group-hover:text-foreground transition-colors">24/7 Support</span>
             </a>
-            <button
-              onClick={() => {
-                setSelectedPlan({
-                  name: "Free Trial",
-                  period: "1 uur",
-                  devices: 1,
-                  isTrial: true
-                });
-                setShowWhatsAppPopup(true);
-              }}
+            <NavLink 
+              href="#pricing"
+              targetId="#pricing"
               className="hidden md:flex items-center gap-2 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5"
             >
-              Start Free Trial
+              Nu starten
               <span className="w-5 h-5 flex items-center justify-center bg-white/20 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right">
                   <path d="M5 12h14"></path>
                   <path d="m12 5 7 7-7 7"></path>
                 </svg>
               </span>
-            </button>
+            </NavLink>
           </div>
 
           {/* Mobile menu button */}
@@ -216,7 +209,7 @@ export function Navigation() {
                 { name: 'Reviews', href: '/#testimonials', targetId: '#testimonials' },
                 { name: 'FAQ', href: '/#faq', targetId: '#faq' },
                 { name: 'Contact', href: '/#contact', targetId: '#contact' },
-                { name: 'Handleiding', href: '/handleiding', targetId: null },
+                { name: 'IPTV Kopen', href: '/iptv-kopen', targetId: null },
               ].map((item) => (
                 <div key={item.name} className="border-b border-border/20 last:border-0">
                   {item.isDropdown ? (
@@ -252,7 +245,7 @@ export function Navigation() {
                         {item.items.map((dropdownItem) => (
                           <Link
                             key={dropdownItem.name}
-                            href={dropdownItem.href}
+                            href={dropdownItem.href ?? "/"}
                             className="block px-4 py-2 text-sm text-foreground/70 hover:text-primary hover:bg-foreground/5 rounded-lg transition-colors"
                             onClick={() => setIsMenuOpen(false)}
                           >
@@ -265,13 +258,11 @@ export function Navigation() {
                     <div onClick={(e) => {
                       e.preventDefault();
                       setIsMenuOpen(false);
-                      
-                      // Small delay to allow menu to start closing before scrolling
                       setTimeout(() => {
-                        const element = document.querySelector(item.targetId);
+                        const element = document.querySelector(item.targetId as string);
                         if (element) {
                           element.scrollIntoView({ behavior: 'smooth' });
-                          window.history.pushState({}, '', item.targetId);
+                          window.history.pushState({}, '', item.targetId as string);
                         }
                       }, 200);
                     }}>
@@ -283,7 +274,7 @@ export function Navigation() {
                     </div>
                   ) : (
                     <Link 
-                      href={item.href}
+                      href={item.href ?? "/"}
                       className="block px-4 py-3 text-foreground/80 hover:text-primary hover:bg-foreground/5 rounded-lg transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
@@ -293,27 +284,19 @@ export function Navigation() {
                 </div>
               ))}
               <div className="pt-4 px-4">
-                <button
-                  onClick={() => {
-                    setSelectedPlan({
-                      name: "Free Trial",
-                      period: "1 uur",
-                      devices: 1,
-                      isTrial: true
-                    });
-                    setIsMenuOpen(false);
-                    setShowWhatsAppPopup(true);
-                  }}
+                <NavLink 
+                  href="#pricing"
+                  targetId="#pricing"
                   className="w-full justify-between group flex items-center px-4 py-2 text-sm font-medium hover:bg-muted/50 rounded-md transition-colors"
                 >
-                  Start Free Trial
+                  Nu starten
                   <span className="w-5 h-5 flex items-center justify-center bg-primary/10 text-primary rounded-full group-hover:bg-primary/20 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right">
                       <path d="M5 12h14"></path>
                       <path d="m12 5 7 7-7 7"></path>
                     </svg>
                   </span>
-                </button>
+                </NavLink>
               </div>
             </div>
           </div>

@@ -111,8 +111,9 @@ export function Navigation() {
                       {item.items.map((dropdownItem) => (
                         <Link
                           key={dropdownItem.name}
-                          href={dropdownItem.href}
-                          className="block px-4 py-2 text-sm text-foreground/80 hover:bg-foreground/5 hover:text-primary transition-colors"
+                          href={dropdownItem.href ?? "/"}
+                          className="block px-4 py-3 text-foreground/80 hover:text-primary hover:bg-foreground/5 rounded-lg transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
                         >
                           {dropdownItem.name}
                         </Link>
@@ -132,7 +133,7 @@ export function Navigation() {
               ) : (
                 <Link 
                   key={item.name}
-                  href={item.href}
+                  href={item.href ?? "/"}
                   className="px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors rounded-full hover:bg-foreground/5"
                 >
                   {item.name}
@@ -157,7 +158,7 @@ export function Navigation() {
               targetId="#pricing"
               className="hidden md:flex items-center gap-2 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5"
             >
-              Start Free Trial
+              Nu starten
               <span className="w-5 h-5 flex items-center justify-center bg-white/20 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right">
                   <path d="M5 12h14"></path>
@@ -203,7 +204,7 @@ export function Navigation() {
                   { name: 'Beoordelingen', href: '/#testimonials' },
                   { name: 'Veelgestelde vragen', href: '/#faq' },
                   { name: 'Contact', href: '/#contact' },
-                  { name: 'Handleiding', href: '/handleiding' },
+                  { name: 'IPTV Kopen', href: '/iptv-kopen' },
                 ].map((item) => (
                   <a
                     key={item.name}
@@ -237,7 +238,7 @@ export function Navigation() {
                   }}
                   className="mx-4 my-2 px-4 py-3 bg-primary text-white rounded-lg font-medium flex items-center justify-between hover:bg-primary/90 transition-colors"
                 >
-                  Start Free Trial
+                  Nu starten
                   <span className="ml-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right">
                       <path d="M5 12h14"></path>

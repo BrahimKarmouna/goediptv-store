@@ -80,31 +80,31 @@ const providers = [
   {
     name: 'StreamPro IPTV',
     rating: '9.5/10',
-    price: 'Vanaf €12,99/maand',
+    price: 'Vanaf €19,99/maand',
     pros: [
       'Meer dan 10.000 kanalen',
       'Nederlandse zenders in HD',
       '7 dagen geld-terug-garantie',
       'Werkt op alle apparaten'
     ],
-    link: '/proefabonnement'
+    link: '/#pricing'
   },
   {
     name: 'IPTV Nederland',
     rating: '9.0/10',
-    price: 'Vanaf €14,99/maand',
+    price: 'Vanaf €34,99/maand',
     pros: [
       '8.500+ kanalen',
       'Uitgebreide sportselectie',
       'Ondersteuning voor opnemen',
-      '3 dagen gratis proefperiode'
+      '24/7 klantenservice'
     ],
     link: '#iptv-nederland'
   },
   {
     name: 'Dutch TV Plus',
     rating: '8.7/10',
-    price: 'Vanaf €11,99/maand',
+    price: 'Vanaf €49,99/maand',
     pros: [
       '7.000+ kanalen',
       'Goede prijs-kwaliteitverhouding',
@@ -126,12 +126,12 @@ export default function IptvKopenGids() {
               IPTV Kopen - Complete Gids 2024
             </h1>
             <p className="text-sm text-muted-foreground text-center mb-8">
-              Alle prijzen zijn inclusief BTW. Geen verborgen kosten. 1 uur gratis proberen.
+              Alle prijzen zijn inclusief BTW. Geen verborgen kosten. Start vanaf €19,99 per maand.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-                <Link href="/proefabonnement">
-                  Probeer nu 1 uur gratis
+                <Link href="#stappenplan">
+                  Start nu voor €19,99
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
@@ -167,22 +167,22 @@ export default function IptvKopenGids() {
       {/* Step by Step Guide */}
       <section id="stappenplan" className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-4">Hveel kost IPTV in Nederland?</h2>
+          <h2 className="text-3xl font-bold text-center mb-4">Hoeveel kost IPTV in Nederland?</h2>
           <p className="text-xl text-muted-foreground text-center max-w-3xl mx-auto mb-12">
-            De prijzen voor IPTV-abonnementen variëren afhankelijk van de aanbieder en het gekozen pakket. 
-            Gemiddeld betaal je tussen de €10 en €20 per maand voor een goed IPTV-abonnement.
+            De prijzen voor IPTV-abonnementen variëren per aanbieder en pakket. Reken voor kwalitatieve diensten op 
+            ongeveer €19,99 per maand voor een basispakket, tot €34,99–€49,99 voor uitgebreidere pakketten met extra functies.
           </p>
           
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {[
-              { name: 'Basis', price: '€12,99/maand', features: ['5.000+ kanalen', 'Nederlandse zenders', 'HD kwaliteit', '24/7 support'], popular: false },
+              { name: 'Basis', price: '€19,99/maand', features: ['5.000+ kanalen', 'Nederlandse zenders', 'HD kwaliteit', '24/7 support'], popular: false },
               { 
                 name: 'Standaard', 
-                price: '€14,99/maand', 
+                price: '€34,99/maand', 
                 features: ['10.000+ kanalen', 'Nederlandse & internationale zenders', 'Full HD kwaliteit', 'EPG TV-gids', 'Ondersteuning voor opnemen'], 
                 popular: true 
               },
-              { name: 'Premium', price: '€19,99/maand', features: ['15.000+ kanalen', 'Alle zenders in HD', '4K beschikbaar', 'Multiroom optie', 'Geen reclame', 'VIP support'], popular: false },
+              { name: 'Premium', price: '€49,99/maand', features: ['15.000+ kanalen', 'Alle zenders in HD', '4K beschikbaar', 'Multiroom optie', 'Geen reclame', 'VIP support'], popular: false },
             ].map((plan, index) => (
               <div 
                 key={index} 
@@ -206,8 +206,8 @@ export default function IptvKopenGids() {
                   ))}
                 </ul>
                 <Button asChild className="w-full" size="lg">
-                  <Link href="/proefabonnement">
-                    Nu proberen
+                  <Link href="#stappenplan">
+                    Nu starten
                   </Link>
                 </Button>
               </div>
@@ -266,7 +266,7 @@ export default function IptvKopenGids() {
                   <span className="text-muted-foreground">{provider.rating}</span>
                 </div>
                 <div className="text-2xl font-bold text-primary mb-2">{provider.price}</div>
-                <p className="text-sm text-muted-foreground mb-4">1 uur gratis proberen</p>
+                <p className="text-sm text-muted-foreground mb-4">Directe activatie · Geen contracten · 24/7 support</p>
                 <ul className="space-y-3 mb-8">
                   {provider.pros.map((pro, i) => (
                     <li key={i} className="flex items-start">
@@ -277,7 +277,7 @@ export default function IptvKopenGids() {
                 </ul>
                 <Button asChild className="w-full" size="lg">
                   <Link href={provider.link}>
-                    {index === 0 ? '1 uur gratis proberen' : 'Meer informatie'}
+                    {index === 0 ? 'Nu starten' : 'Meer informatie'}
                   </Link>
                 </Button>
               </div>

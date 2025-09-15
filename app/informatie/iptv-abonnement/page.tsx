@@ -83,7 +83,7 @@ export default function IptvAbonnement() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mt-8">
           <div className="border rounded-lg p-6">
             <h4 className="text-xl font-bold mb-2">1 Maand</h4>
-            <p className="text-3xl font-bold mb-4">€14,99/maand</p>
+            <p className="text-3xl font-bold mb-4">€19,99/maand</p>
             <ul className="space-y-2">
               <li>✓ 20.000+ kanalen</li>
               <li>✓ 100.000+ VOD</li>
@@ -96,8 +96,8 @@ export default function IptvAbonnement() {
               <h4 className="text-xl font-bold">3 Maanden</h4>
               <span className="bg-primary text-white text-xs font-medium px-2.5 py-0.5 rounded">Populair</span>
             </div>
-            <p className="text-3xl font-bold mb-4">€12,99/maand</p>
-            <p className="text-sm text-muted-foreground mb-4">Betaal €38,97 per 3 maanden</p>
+            <p className="text-3xl font-bold mb-4">€34,99/maand</p>
+            <p className="text-sm text-muted-foreground mb-4">Betaal €104,97 per 3 maanden</p>
             <ul className="space-y-2">
               <li>✓ 20.000+ kanalen</li>
               <li>✓ 100.000+ VOD</li>
@@ -108,8 +108,8 @@ export default function IptvAbonnement() {
           </div>
           <div className="border rounded-lg p-6">
             <h4 className="text-xl font-bold mb-2">6 Maanden</h4>
-            <p className="text-3xl font-bold mb-4">€10,99/maand</p>
-            <p className="text-sm text-muted-foreground mb-4">Betaal €65,94 per 6 maanden</p>
+            <p className="text-3xl font-bold mb-4">€49,99/maand</p>
+            <p className="text-sm text-muted-foreground mb-4">Betaal €299,94 per 6 maanden</p>
             <ul className="space-y-2">
               <li>✓ 20.000+ kanalen</li>
               <li>✓ 100.000+ VOD</li>
@@ -121,8 +121,8 @@ export default function IptvAbonnement() {
           </div>
           <div className="border rounded-lg p-6">
             <h4 className="text-xl font-bold mb-2">12 Maanden</h4>
-            <p className="text-3xl font-bold mb-4">€8,99/maand</p>
-            <p className="text-sm text-muted-foreground mb-4">Betaal €107,88 per jaar</p>
+            <p className="text-3xl font-bold mb-4">€69,99/maand</p>
+            <p className="text-sm text-muted-foreground mb-4">Betaal €839,88 per jaar</p>
             <ul className="space-y-2">
               <li>✓ 20.000+ kanalen</li>
               <li>✓ 100.000+ VOD</li>

@@ -143,13 +143,13 @@ export function Footer() {
                   <h5 className="font-semibold text-foreground text-base border-b pb-2">Sport</h5>
                   <ul className="space-y-3">
                     {[
-                      { name: 'Voetbal', href: '/beste-iptv-voor-sport' },
-                      { name: 'Formule 1', href: '/iptv-met-espn' },
-                      { name: 'Wielrennen', href: '/beste-iptv-voor-sport' },
-                      { name: 'Tennis', href: '/beste-iptv-voor-sport' },
-                      { name: 'Wintersport', href: '/beste-iptv-voor-sport' },
-                      { name: 'Basketbal', href: '/beste-iptv-voor-sport' },
-                      { name: 'Alle Sporten', href: '/beste-iptv-voor-sport' },
+                      { name: 'IPTV Voetbal', href: '/iptv-kopen/sport/voetbal' },
+                      { name: 'IPTV Formule 1', href: '/iptv-kopen/sport/formule-1' },
+                      { name: 'IPTV Wielrennen', href: '/iptv-kopen/sport/wielrennen' },
+                      { name: 'IPTV Tennis', href: '/iptv-kopen/sport/tennis' },
+                      { name: 'IPTV Wintersport', href: '/iptv-kopen/sport/wintersport' },
+                      { name: 'IPTV Basketbal', href: '/iptv-kopen/sport/basketbal' },
+                      { name: 'Alle IPTV Sporten', href: '/iptv-kopen/sport/alle-sporten' },
                     ].map((item, index) => (
                       <li key={index} className="group">
                         <a 
@@ -171,13 +171,13 @@ export function Footer() {
                   <h5 className="font-semibold text-foreground text-base border-b pb-2">Platformen</h5>
                   <ul className="space-y-3">
                     {[
-                      { name: 'Smart TV', href: '/iptv-op-smart-tv' },
-                      { name: 'Android', href: '/iptv-voor-android' },
-                      { name: 'Apple TV', href: '/iptv-voor-apple-tv' },
-                      { name: 'VLC Player', href: '/iptv-met-vlc-player' },
-                      { name: 'EPG Gids', href: '/iptv-met-epg-gids' },
-                      { name: 'Handleiding', href: '/iptv-handleiding' },
-                      { name: 'Storing Oplossen', href: '/hulp-bij-iptv-installatie' },
+                      { name: 'IPTV Smart TV', href: '/iptv-kopen/smart-tv' },
+                      { name: 'IPTV Android', href: '/iptv-kopen/android' },
+                      { name: 'IPTV Apple TV', href: '/iptv-kopen/apple-tv' },
+                      { name: 'IPTV VLC Player', href: '/iptv-kopen/vlc-player' },
+                      { name: 'IPTV EPG Gids', href: '/iptv-kopen/epg-gids' },
+                      { name: 'IPTV Kopen', href: '/iptv-kopen' },
+                      { name: 'IPTV Storing Oplossen', href: '/iptv-kopen/storing-oplossen' },
                     ].map((item, index) => (
                       <li key={index} className="group">
                         <a 
@@ -198,7 +198,7 @@ export function Footer() {
           {/* Contact */}
           <div className="space-y-6 w-full md:w-[250px] flex-shrink-0">
             <h4 className="text-lg font-semibold text-foreground relative inline-block">
-              Contact Us
+              Contact
               <span className="absolute -bottom-1 left-0 w-10 h-0.5 bg-primary"></span>
             </h4>
             <div className="space-y-4">
@@ -207,8 +207,8 @@ export function Footer() {
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-foreground">Phone Support</p>
-                  <p className="text-sm text-muted-foreground">+1 (555) 123-4567</p>
+                  <p className="text-sm font-medium text-foreground">Telefonische support</p>
+                  <p className="text-sm text-muted-foreground">+31 970 102 7003</p>
                 </div>
               </div>
               
@@ -217,8 +217,8 @@ export function Footer() {
                   <Mail className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-foreground">Email Us</p>
-                  <p className="text-sm text-muted-foreground">support@streamproiptv.com</p>
+                  <p className="text-sm font-medium text-foreground">E-mail</p>
+                  <p className="text-sm text-muted-foreground">support@iptvkopen.nl</p>
                 </div>
               </div>
               
@@ -227,9 +227,9 @@ export function Footer() {
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-foreground">Global Support</p>
-                  <p className="text-sm text-muted-foreground">Available Worldwide</p>
-                  <p className="text-sm text-muted-foreground">24/7 Customer Support</p>
+                  <p className="text-sm font-medium text-foreground">Wereldwijde support</p>
+                  <p className="text-sm text-muted-foreground">Wereldwijd beschikbaar</p>
+                  <p className="text-sm text-muted-foreground">24/7 Klantenservice</p>
                 </div>
               </div>
             </div>
@@ -241,7 +241,7 @@ export function Footer() {
                 }}
                 className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary transition-all"
               >
-                View All Plans & Pricing
+                Bekijk alle pakketten & prijzen
               </Button>
               <NavLink
                 href="#pricing"
@@ -252,7 +252,7 @@ export function Footer() {
                   variant="outline" 
                   className="w-full border-primary text-primary hover:bg-primary/10 cursor-pointer"
                 >
-                  Start Free Trial
+                  Nu starten
                 </Button>
               </NavLink>
             </div>
@@ -268,7 +268,7 @@ export function Footer() {
               }}
               className="px-6 py-3 bg-gradient-to-r from-primary to-primary/90 text-white rounded-full font-medium hover:shadow-lg hover:shadow-primary/20 transition-all hover:-translate-y-0.5"
             >
-              View All Plans & Pricing
+              Bekijk alle pakketten & prijzen
             </Button>
             <NavLink
               href="#pricing"
@@ -279,7 +279,7 @@ export function Footer() {
                 variant="outline"
                 className="px-6 py-3 border border-primary/20 text-primary rounded-full font-medium hover:bg-primary/5 transition-all cursor-pointer"
               >
-                Start Free Trial
+                Nu starten
               </Button>
             </NavLink>
           </div>
