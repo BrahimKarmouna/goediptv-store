@@ -29,30 +29,31 @@ export const metadata: Metadata = {
     },
   },
   title: {
-    default: "IPTV Kopen | Beste Nederlandse IPTV Abonnementen 2024",
-    template: "%s | IPTV Kopen Nederland"
+    default: "Goed IPTV | Beste Nederlandse IPTV Abonnementen 2024",
+    template: "%s | Goed IPTV Nederland"
   },
-  description: "✅ Beste IPTV aanbieders van Nederland! Vergelijk en kies het beste IPTV abonnement voor Nederlandse zenders, sport, films en series. ✅ 24/7 support en eenvoudige installatie.",
+  description: "✅ Goed IPTV in Nederland! Vergelijk en kies het beste IPTV abonnement (Nederlandse zenders, sport, films en series). ✅ 24/7 support en eenvoudige installatie.",
   keywords: [
-    "iptv kopen", "nederlandse iptv", "goedkope iptv", "beste iptv nederland", 
+    "goed iptv", "iptv kopen", "iptv netherlands", "dutch iptv",
+    "nederlandse iptv", "goedkope iptv", "beste iptv nederland", 
     "iptv abonnement", "nederlandse zenders kijken", "iptv met nederlandse zenders",
     "goedkope iptv nederland", "iptv aanbieders", "iptv nederland betrouwbaar"
   ],
-  applicationName: "IPTV Kopen Nederland",
-  authors: [{ name: "IPTV Kopen" }],
+  applicationName: "Goed IPTV Nederland",
+  authors: [{ name: "Goed IPTV" }],
   generator: "Next.js",
   openGraph: {
-    title: 'Beste IPTV Abonnementen van Nederland | IPTV Kopen',
-    description: 'Vergelijk en kies het beste IPTV abonnement met Nederlandse zenders, sport, films en series. Eenvoudige installatie en 24/7 support.',
+    title: 'Beste IPTV Abonnementen van Nederland | Goed IPTV',
+    description: 'Vergelijk en kies het beste IPTV abonnement met Nederlandse zenders, sport, films en series. Goed IPTV, eenvoudige installatie en 24/7 support.',
     url: 'https://www.iptvkopen.nl',
-    siteName: 'IPTV Kopen',
+    siteName: 'Goed IPTV',
     locale: 'nl_NL',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Beste IPTV Abonnementen van Nederland | IPTV Kopen',
-    description: 'Vergelijk en kies het beste IPTV abonnement met Nederlandse zenders, sport, films en series.',
+    title: 'Beste IPTV Abonnementen van Nederland | Goed IPTV',
+    description: 'Vergelijk en kies het beste IPTV abonnement met Nederlandse zenders, sport, films en series. Goed IPTV in Nederland.',
     creator: '@iptvkopen_nl',
   },
   robots: {

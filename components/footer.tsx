@@ -48,12 +48,14 @@ export function Footer() {
               }}
               className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
             >
-              <span className="text-3xl font-serif font-black bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                StreamPro IPTV
-              </span>
+              <img
+                src="/goed-iptv.png"
+                alt="Goed IPTV"
+                className="h-12 md:h-14 w-auto object-contain"
+              />
             </a>
             <p className="text-muted-foreground leading-relaxed">
-              Premium IPTV subscriptions with 20,000+ channels worldwide. Your gateway to unlimited entertainment in crystal clear quality.
+              Goed IPTV subscriptions with 20,000+ channels worldwide. Your gateway to unlimited entertainment in crystal clear quality.
             </p>
             <div className="flex space-x-3 pt-2">
               <Button variant="ghost" size="icon" className="rounded-full hover:bg-primary/10 hover:text-primary transition-all cursor-pointer group">
@@ -117,11 +119,11 @@ export function Footer() {
                       { name: 'Wat is IPTV', href: '/informatie/wat-is-iptv' },
                       { name: 'Is IPTV Legaal?', href: '/informatie/is-iptv-legaal' },
                       { name: 'IPTV in het Buitenland', href: '/informatie/iptv-in-het-buitenland' },
-                      { name: 'IPTV Kopen', href: '/informatie/iptv-kopen' },
+                      { name: 'Goed IPTV', href: '/informatie/iptv-kopen' },
                       { name: 'Beste IPTV Aanbieder', href: '/beste-iptv-aanbieder' },
                       { name: 'Betrouwbare IPTV', href: '/betrouwbare-iptv' },
                       { name: 'IPTV Abonnement', href: '/informatie/iptv-abonnement' }, 
-                      { name: 'IPTV Kopen', href: '/iptv-kopen' },
+                      { name: 'Goed IPTV', href: '/iptv-kopen' },
                     ].map((item, index) => (
                       <li key={index} className="group">
                         <a 
@@ -284,8 +286,7 @@ export function Footer() {
             </NavLink>
           </div>
           <p className="text-sm text-muted-foreground pt-4">
-            © {new Date().getFullYear()} StreamPro IPTV. All rights res
-            erved. | Premium IPTV Subscriptions Worldwide
+            © {new Date().getFullYear()} Goed IPTV. All rights reserved. | Goed IPTV Subscriptions Worldwide
           </p>
           <div className="flex justify-center space-x-6 pt-4">
             <a href="/privacy-policy" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</a>

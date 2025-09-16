@@ -52,10 +52,10 @@ export default function TestimonialsSection() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6">
-            What Our <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Customers Say</span>
+            What Our <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Goed IPTV</span> Customers Say
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Join thousands of satisfied customers who have made the switch to our premium IPTV service.
+            Join thousands of satisfied customers who have made the switch to our Goed IPTV service.
           </p>
         </div>
 

@@ -49,9 +49,9 @@ export default function FAQSection() {
       <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6">
-            Frequently Asked <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Questions</span>
+            Veelgestelde <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Vragen</span>
           </h2>
-          <p className="text-xl text-muted-foreground">Everything you need to know about our IPTV service</p>
+          <p className="text-xl text-muted-foreground">Alles wat je moet weten over onze Goed IPTV service</p>
         </div>
 
         <Accordion type="single" collapsible className="space-y-4">

@@ -4,24 +4,24 @@ import { Button } from '@/components/ui/button';
 import { Check, Shield, Tv, Smartphone, Zap, Clock, Award, Users, ThumbsUp } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'IPTV Kopen - Complete Gids 2024 | Betrouwbare IPTV Nederland',
-  description: 'Alles wat je moet weten over IPTV kopen in 2024. Onze uitgebreide gids helpt je bij het kiezen van de beste IPTV-aanbieder voor Nederlandse kijkers.',
-  keywords: ['iptv kopen', 'beste iptv nederland', 'goedkope iptv', 'iptv abonnement', 'nederlandse iptv'],
+  title: 'Goed IPTV & IPTV Kopen - Complete Gids 2024 | Betrouwbare IPTV Nederland',
+  description: 'Alles wat je moet weten over Goed IPTV en IPTV kopen in 2024. Onze uitgebreide gids helpt je bij het kiezen van de beste IPTV-aanbieder voor Nederlandse kijkers.',
+  keywords: ['goed iptv', 'iptv kopen', 'iptv netherlands', 'dutch iptv', 'beste iptv nederland', 'goedkope iptv', 'iptv abonnement', 'nederlandse iptv'],
   alternates: {
     canonical: 'https://streampro-iptv.com/iptv-kopen-gids'
   },
   openGraph: {
-    title: 'IPTV Kopen - Complete Gids 2024 | Betrouwbare IPTV Nederland',
-    description: 'Leer hoe je de beste IPTV-service kiest en waar je op moet letten bij het afsluiten van een abonnement.',
+    title: 'Goed IPTV & IPTV Kopen - Complete Gids 2024 | Betrouwbare IPTV Nederland',
+    description: 'Leer hoe je Goed IPTV kiest: waar je op moet letten bij het afsluiten van een IPTV abonnement in Nederland.',
     type: 'article',
     locale: 'nl_NL',
     url: 'https://streampro-iptv.com/iptv-kopen-gids',
-    siteName: 'StreamPro IPTV',
+    siteName: 'Goed IPTV',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'IPTV Kopen - Complete Gids 2024',
-    description: 'Ontdek waar je op moet letten bij het kopen van een IPTV-abonnement in Nederland.',
+    title: 'Goed IPTV - Complete Gids 2024',
+    description: 'Ontdek waar je op moet letten bij Goed IPTV en het kopen van een IPTV-abonnement in Nederland.',
   }
 };
 
@@ -123,7 +123,7 @@ export default function IptvKopenGids() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              IPTV Kopen - Complete Gids 2024
+              Goed IPTV - Complete Gids 2024
             </h1>
             <p className="text-sm text-muted-foreground text-center mb-8">
               Alle prijzen zijn inclusief BTW. Geen verborgen kosten. Start vanaf €19,99 per maand.

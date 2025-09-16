@@ -15,7 +15,7 @@ export default function IptvKopenPage() {
               Betrouwbaar • Snel • HD/4K
             </span>
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
-              IPTV Kopen in Nederland
+              Goed IPTV – IPTV Kopen in Nederland
             </h1>
             <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl">
               Bestel direct en kijk binnen enkele minuten. Kies een looptijd die bij je past en geniet van duizenden kanalen, films en series in HD/4K.
@@ -57,7 +57,7 @@ export default function IptvKopenPage() {
       {/* Benefits */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Alles wat je nodig hebt</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Alles wat je nodig hebt met Goed IPTV</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {[ 
               { icon: <Tv className="w-7 h-7 text-primary" />, title: "10.000+ Kanalen", desc: "Inclusief NL, sport, films en internationaal aanbod" },
@@ -78,7 +78,7 @@ export default function IptvKopenPage() {
       {/* Channels showcase */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">NL en internationale zenders</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Goed IPTV: NL en internationale zenders</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 max-w-6xl mx-auto">
             {["NPO 1","NPO 2","NPO 3","RTL 4","RTL 5","SBS 6","ESPN","Ziggo Sport","BBC","Sky","ARD","ZDF"].map((ch) => (
               <div key={ch} className="text-center border border-border rounded-lg p-3 bg-card text-sm text-foreground/80">
@@ -93,7 +93,7 @@ export default function IptvKopenPage() {
       {/* How it works */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Zo werkt het</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Zo werkt Goed IPTV</h2>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {[
               { step: "1", title: "Kies je abonnement", desc: "Selecteer 1, 3, 6 of 12 maanden – altijd flexibel en zonder contract" },
@@ -113,7 +113,7 @@ export default function IptvKopenPage() {
       {/* Devices */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Compatibel met al je apparaten</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Goed IPTV op al je apparaten</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {[
               { title: "Smart TV", desc: "Samsung, LG, Android TV, Google TV" },
@@ -138,7 +138,7 @@ export default function IptvKopenPage() {
       {/* App tiles / Popular apps */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Populaire apps en spelers</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Goed IPTV: Populaire apps en spelers</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {[ 
               { title: "Smart STB", desc: "Veelgebruikt op Smart TV" },
@@ -162,7 +162,7 @@ export default function IptvKopenPage() {
       {/* Comparison table */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Vergelijk en kies slim</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Vergelijk Goed IPTV en kies slim</h2>
           <div className="max-w-5xl mx-auto overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -198,7 +198,7 @@ export default function IptvKopenPage() {
       {/* FAQ */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl font-bold text-center mb-10">Veelgestelde vragen over IPTV kopen</h2>
+          <h2 className="text-3xl font-bold text-center mb-10">Veelgestelde vragen over Goed IPTV en IPTV kopen</h2>
           <div className="space-y-6">
             {[
               { q: "Is IPTV legaal?", a: "IPTV is legaal wanneer je gebruikmaakt van aanbieders met de juiste rechten. Wij adviseren enkel betrouwbare providers." },

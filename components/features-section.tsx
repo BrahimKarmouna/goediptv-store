@@ -50,10 +50,10 @@ export default function FeaturesSection() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Waarom kiezen voor onze <span className="text-primary">IPTV service</span>?
+            Waarom kiezen voor onze <span className="text-primary">Goed IPTV service</span>?
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ontdek de voordelen van de beste IPTV-ervaring in Nederland
+            Ontdek de voordelen van de beste Goed IPTV-ervaring in Nederland
           </p>
         </div>
 

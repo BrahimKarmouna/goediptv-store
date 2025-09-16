@@ -71,10 +71,11 @@ export function Navigation() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="cursor-pointer group">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                IPTV<span className="text-foreground">Kopen</span>
-                <span className="block h-0.5 bg-gradient-to-r from-primary to-transparent w-0 group-hover:w-full transition-all duration-300"></span>
-              </h1>
+              <img
+                src="/goed-iptv.png"
+                alt="Goed IPTV"
+                className="h-12 md:h-14 w-auto object-contain transition-opacity group-hover:opacity-90"
+              />
             </Link>
           </div>
 
@@ -204,7 +205,7 @@ export function Navigation() {
                   { name: 'Beoordelingen', href: '/#testimonials' },
                   { name: 'Veelgestelde vragen', href: '/#faq' },
                   { name: 'Contact', href: '/#contact' },
-                  { name: 'IPTV Kopen', href: '/iptv-kopen' },
+                  { name: 'Goed IPTV', href: '/iptv-kopen' },
                 ].map((item) => (
                   <a
                     key={item.name}

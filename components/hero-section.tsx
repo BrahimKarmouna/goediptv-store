@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Play, Tv, Check } from "lucide-react"
+import { Tv, ShieldCheck, Zap, Headphones, Clapperboard, Globe2 } from "lucide-react"
 import { NavLink } from "./ui/nav-link"
 
 export function HeroSection() {
@@ -9,15 +9,19 @@ export function HeroSection() {
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-background to-muted/10 pt-24 pb-16 min-h-[90vh]">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Subtle background image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('https://i.ibb.co/B2jH9n35/TV.png')`,
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-          }}
-        >
+        {/* Background video */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
+          <iframe
+            className="w-full h-full scale-[1.25] origin-center"
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/6f-_gL4_NNg?autoplay=1&mute=1&loop=1&playlist=6f-_gL4_NNg&controls=0&modestbranding=1&rel=0&playsinline=1"
+            title="YouTube video player"
+            frameBorder={0}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
           {/* Gradient overlays for readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background/30" />
@@ -32,53 +36,49 @@ export function HeroSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left column */}
           <div className="w-full max-w-2xl">
-            <div className="inline-flex items-center gap-3 rounded-full border border-border/60 bg-background/70 backdrop-blur px-4 py-2 text-sm sm:text-base text-muted-foreground mb-5 shadow-sm">
-              <span className="inline-flex items-center gap-1 text-primary"><Tv className="w-4 h-4" /> 31.000+ zenders</span>
-              <span className="w-px h-4 bg-border/50" />
-              <span>4K/Full HD</span>
-              <span className="w-px h-4 bg-border/50" />
-              <span>Direct actief</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-5 leading-tight">
-              Premium IPTV, direct actief
+            <h1 className="text-5xl md:text-6xl font-serif font-bold text-foreground mb-6 leading-tight">
+              Goed IPTV, direct actief
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-7 max-w-xl">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl">
               Kijk sport, films en series zonder haperingen op elk apparaat. Geen contracten, geen gedoe.
             </p>
-            <ul className="mb-9 grid grid-cols-1 sm:grid-cols-2 gap-3 text-base text-foreground/90">
+            <div className="mb-8 flex flex-wrap items-center gap-4">
               {[
-                '15.000+ kanalen + VOD',
-                'Werkt op TV, mobiel, tablet',
-                'Eenvoudig installeren',
-                'Nederlandse klantenservice',
-              ].map((t, i) => (
-                <li key={i} className="flex items-center gap-2">
-                  <Check className="w-5 h-5 text-primary" />
-                  <span>{t}</span>
-                </li>
+                { icon: <ShieldCheck className="w-5 h-5" />, label: 'Betrouwbaar' },
+                { icon: <Zap className="w-5 h-5" />, label: 'Direct actief' },
+                { icon: <Tv className="w-5 h-5" />, label: 'HD/4K' },
+                { icon: <Headphones className="w-5 h-5" />, label: '24/7 support' },
+              ].map((item, i) => (
+                <span
+                  key={i}
+                  className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-border/60 bg-background/70 text-base text-foreground/90 backdrop-blur"
+                >
+                  {item.icon}
+                  {item.label}
+                </span>
               ))}
-            </ul>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-xl">
+            </div>
+            <div className="flex flex-col sm:flex-row gap-5 max-w-2xl">
               <NavLink href="/#pricing" targetId="#pricing" className="w-full sm:w-auto">
                 <Button 
                   size="lg"
-                  className="w-full text-lg h-14 px-8 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground hover:from-primary/95 hover:to-primary/80 shadow-lg hover:shadow-primary/30 transition cursor-pointer group"
+                  className="w-full text-xl h-16 px-10 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground hover:from-primary/95 hover:to-primary/80 shadow-xl hover:shadow-primary/30 transition cursor-pointer"
                 >
-                  <Play className="w-5 h-5 mr-2 transition-transform group-hover:translate-x-0.5" /> Bestel nu
+                  Bestel nu
                 </Button>
               </NavLink>
               <NavLink href="/#pricing" targetId="#pricing" className="w-full sm:w-auto">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="w-full text-lg h-14 px-8 border-2 border-border/60 hover:border-primary/60 bg-background/60 backdrop-blur hover:bg-background/80 shadow-sm transition cursor-pointer group"
+                  className="w-full text-xl h-16 px-10 border-2 border-border/60 hover:border-primary/60 bg-background/60 backdrop-blur hover:bg-background/80 shadow-md transition cursor-pointer"
                 >
-                  <span className="transition-transform group-hover:translate-x-0.5">Bekijk prijzen</span>
+                  Bekijk prijzen
                 </Button>
               </NavLink>
             </div>
             <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
-              <span className="inline-flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500" /> 24/7 support</span>
+              <span>24/7 support</span>
               <span className="w-px h-4 bg-border/50" />
               <span>Veilig betalen</span>
               <span className="w-px h-4 bg-border/50" />
@@ -87,28 +87,41 @@ export function HeroSection() {
           </div>
           {/* Right column */}
           <div className="hidden md:block">
-            <div className="relative rounded-2xl border border-border/60 bg-background/50 backdrop-blur p-7 shadow-lg">
-              <div className="grid grid-cols-3 gap-4">
+            <div className="relative rounded-2xl border border-border/60 bg-background/50 backdrop-blur p-8 shadow-xl">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {[
-                  { label: '12 maanden', price: '€69,99' },
-                  { label: '6 maanden', price: '€49,99' },
-                  { label: '3 maanden', price: '€34,99' },
-                ].map((p, i) => (
-                  <NavLink key={i} href="/#pricing" targetId="#pricing" className="block">
-                    <div className="rounded-xl border border-border/50 bg-background/70 hover:border-primary/60 hover:shadow-md transition p-5 cursor-pointer">
-                      <p className="text-sm text-muted-foreground">{p.label}</p>
-                      <p className="text-xl font-semibold text-foreground">{p.price}</p>
+                  {
+                    icon: <Tv className="w-8 h-8 text-primary" />, 
+                    title: '31.000+ Premium Kanalen',
+                    desc: 'Inclusief alle Nederlandse & internationale zenders in HD/4K'
+                  },
+                  {
+                    icon: <Clapperboard className="w-8 h-8 text-primary" />, 
+                    title: '50.000+ Films & Series',
+                    desc: 'De nieuwste blockbusters en exclusieve series'
+                  },
+                  {
+                    icon: <Globe2 className="w-8 h-8 text-primary" />, 
+                    title: '50+ Landen',
+                    desc: 'Wereldwijde content in meerdere talen'
+                  },
+                  {
+                    icon: <ShieldCheck className="w-8 h-8 text-primary" />, 
+                    title: '24/7 Premium Support',
+                    desc: 'Altijd persoonlijke hulp beschikbaar'
+                  },
+                ].map((f, i) => (
+                  <div key={i} className="rounded-2xl border border-border/60 bg-background/70 p-6 hover:border-primary/60 hover:shadow-xl transition-all">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                        {f.icon}
+                      </div>
+                      <h3 className="text-lg md:text-xl font-semibold text-foreground leading-snug">{f.title}</h3>
                     </div>
-                  </NavLink>
+                    <p className="text-base text-muted-foreground leading-relaxed">{f.desc}</p>
+                  </div>
                 ))}
               </div>
-              <NavLink href="/#pricing" targetId="#pricing" className="block">
-                <div className="mt-6 rounded-xl border border-border/50 bg-background/80 p-5 hover:border-primary/60 hover:bg-background/90 hover:shadow-md transition cursor-pointer">
-                  <p className="text-sm text-muted-foreground">Populaire keuze</p>
-                  <p className="text-3xl font-bold text-foreground">1 jaar • €69,99</p>
-                  <p className="text-sm text-muted-foreground mt-1">Directe activatie • HD/4K • 24/7 support</p>
-                </div>
-              </NavLink>
             </div>
           </div>
         </div>
