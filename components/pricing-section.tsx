@@ -113,11 +113,11 @@ const plans: Plan[] = [
   },
   {
     name: "1 Maand",
-    originalPrice: "€29,99",
+    originalPrice: "€19,99",
     discountedPrice: "€19,99",
     period: "1 maand",
     periodLabel: "1mnd/€19,99",
-    description: "Probeer eerst",
+    description: "Flexibel abonnement",
     icon: Sparkles,
     features: [
       "Werkt op alle apparaten",
@@ -142,8 +142,8 @@ Kunt u mij hier meer over vertellen?`;
   const whatsappUrl = `https://api.whatsapp.com/send/?phone=3197010270035&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-all duration-300 animate-fadeIn">
-      <div className="bg-gradient-to-br from-background to-muted/10 border border-border/50 rounded-2xl shadow-2xl overflow-hidden w-full max-w-md transform transition-all duration-300 scale-95 hover:scale-[0.98] hover:shadow-xl">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-all duration-300 animate-fadeIn overflow-y-auto py-16">
+      <div className="bg-gradient-to-br from-background to-muted/10 border border-border/50 rounded-2xl shadow-2xl overflow-hidden w-full max-w-md transform transition-all duration-300 scale-95 hover:scale-[0.98] hover:shadow-xl my-8 max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="relative overflow-hidden p-8 bg-gradient-to-r from-primary/90 to-primary/70">
           {/* Animated background elements */}
@@ -159,8 +159,8 @@ Kunt u mij hier meer over vertellen?`;
                   <MessageCircle className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white font-serif">Start Your {planName} Plan</h3>
-                  <p className="text-white/80 text-sm mt-1">Exclusive offer just for you</p>
+                  <h3 className="text-2xl font-bold text-white font-serif">Start uw {planName} Abonnement</h3>
+                  <p className="text-white/80 text-sm mt-1">Directe activatie mogelijk</p>
                 </div>
               </div>
               <button 
@@ -182,8 +182,8 @@ Kunt u mij hier meer over vertellen?`;
                 <MessageCircle className="w-12 h-12 text-primary" />
               </div>
             </div>
-            <h4 className="text-2xl font-bold text-foreground font-serif mb-3">Ready to Get Started?</h4>
-            <p className="text-muted-foreground">Click below to contact us on WhatsApp and begin your {planName} experience today!</p>
+            <h4 className="text-2xl font-bold text-foreground font-serif mb-3">Klaar om te beginnen?</h4>
+            <p className="text-muted-foreground">Klik hieronder om ons te bereiken via WhatsApp en start vandaag nog met uw {planName} abonnement!</p>
           </div>
           
           <div className="space-y-6">
@@ -197,7 +197,7 @@ Kunt u mij hier meer over vertellen?`;
               <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-600 group-hover:from-green-600 group-hover:to-green-700 transition-all duration-300"></div>
               <div className="absolute inset-0.5 bg-gradient-to-r from-green-500 to-green-600 rounded-xl group-hover:from-green-600 group-hover:to-green-700 transition-all duration-300"></div>
               <div className="absolute inset-0.5 bg-gradient-to-r from-green-600 to-green-700 rounded-xl group-hover:from-green-700 group-hover:to-green-800 transition-all duration-300 flex items-center justify-center space-x-2 text-white">
-                <span>Chat on WhatsApp</span>
+                <span>Chat via WhatsApp</span>
                 <svg className="w-5 h-5 text-white transition-transform duration-300 group-hover:translate-x-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M19.05 4.91a9.816 9.816 0 00-7.02-2.91A9.855 9.855 0 002.1 12c0 1.74.45 3.36 1.24 4.79l-1.3 3.95 4.05-1.3c1.38.75 2.93 1.18 4.56 1.18h.01c5.47 0 9.92-4.43 9.92-9.91 0-2.65-1.03-5.14-2.9-7.01z"></path>
                   <path fill="#fff" d="M12 20.5c-1.5 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.27 8.27 0 01-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.17 8.17 0 012.4 5.83c.01 4.54-3.69 8.25-8.23 8.25zm4.52-6.1c-.25-.13-1.47-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.64.8-.78.97-.14.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43s.17-.25.25-.42c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.42 1.41.54.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.07-.1-.23-.16-.48-.27z"></path>
@@ -206,12 +206,12 @@ Kunt u mij hier meer over vertellen?`;
             </a>
             
             <div className="text-center">
-              <p className="text-sm text-muted-foreground mb-4">Available 24/7 • Response within minutes</p>
+              <p className="text-sm text-muted-foreground mb-4">24/7 beschikbaar • Snel antwoord</p>
               <div className="flex flex-wrap items-center justify-center gap-4">
                 {[
-                  { text: 'No setup fees', icon: '✓' },
-                  { text: 'Cancel anytime', icon: '✓' },
-                  { text: 'Secure payment', icon: '✓' }
+                  { text: 'Geen opstartkosten', icon: '✓' },
+                  { text: 'Altijd opzegbaar', icon: '✓' },
+                  { text: 'Veilige betaling', icon: '✓' }
                 ].map((item, i) => (
                   <div key={i} className="flex items-center text-sm text-muted-foreground bg-muted/30 px-3 py-1.5 rounded-full">
                     <span className="text-green-500 mr-1.5">{item.icon}</span>
