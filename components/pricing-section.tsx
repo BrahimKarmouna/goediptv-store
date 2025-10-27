@@ -116,7 +116,7 @@ const plans: Plan[] = [
     originalPrice: "free",
     discountedPrice: "free",
     period: "1 uur",
-    periodLabel: "1uur/free",
+    periodLabel: "1uur/€0",
     description: "Flexibel abonnement",
     icon: Sparkles,
     features: [
