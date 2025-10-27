@@ -137,6 +137,7 @@ function WhatsAppPopup({ onClose, planName }: { onClose: () => void, planName: s
 
 - Abonnement: ${planName}
 - Aantal apparaten: 1 apparaat
+-website: goed-iptv.store
 
 Kunt u mij hier meer over vertellen?`;
   const whatsappUrl = `https://api.whatsapp.com/send/?phone=3197010270035&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
