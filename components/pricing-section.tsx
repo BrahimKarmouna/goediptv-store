@@ -111,25 +111,25 @@ const plans: Plan[] = [
     popular: false,
     cta: "Nu starten"
   },
-  {
-    name: "1 Uur",
-    originalPrice: "free",
-    discountedPrice: "free",
-    period: "1 uur",
-    periodLabel: "1uur/€0",
-    description: "Flexibel abonnement",
-    icon: Sparkles,
-    features: [
-      "Werkt op alle apparaten",
-      "+75.000 films & series",
-      "24/7 Nederlandse klantenservice",
-      "HD & Full HD kwaliteit",
-      "Internationaal pakket met +21.000 IPTV kanalen",
-      "Directe activatie"
-    ],
-    popular: false,
-    cta: "Nu starten"
-  }
+{
+  name: "Gratis Proefperiode",
+  originalPrice: "€0,00",
+  discountedPrice: "€0,00",
+  period: "1 uur",
+  periodLabel: "1u gratis",
+  description: "Probeer ons 1 uur gratis!",
+  icon: Sparkles,
+  features: [
+    "Werkt op alle apparaten",
+    "+75.000 films & series",
+    "Directe activatie",
+    "Geen verplichtingen",
+    "Internationaal pakket met +21.000 IPTV kanalen"
+  ],
+  popular: false,
+  cta: "Gratis Probeer",
+}
+
 ]
 
 function WhatsAppPopup({ onClose, planName }: { onClose: () => void, planName: string }) {
