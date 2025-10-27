@@ -68,11 +68,11 @@ const plans = [
     cta: "Nu starten"
   },
   {
-    name: "1 Maand",
+    name: "1 Uur",
     originalPrice: "€29,99",
     discountedPrice: "€19,99",
-    period: "1 maand",
-    periodLabel: "1mnd/€19,99",
+    period: "1 uur",
+    periodLabel: "1uur/€19,99",
     description: "Probeer eerst",
     icon: Sparkles,
     features: [

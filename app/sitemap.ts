@@ -34,7 +34,7 @@ const routeExists = (routePath: string): boolean => {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   try {
-    const baseUrl = 'https://www.goed-iptv.nl';
+    const baseUrl = 'https://www.goediptv.store';
     const currentDate = new Date();
     const formattedDate = formatDate(currentDate);
 
@@ -243,7 +243,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     console.error('Error generating sitemap:', error);
     // Return a minimal sitemap with just the homepage if there's an error
     return [{
-      url: 'https://www.goed-iptv.nl',
+      url: 'https://www.goediptv.store',
       lastModified: new Date().toISOString().split('T')[0],
       changeFrequency: 'daily',
       priority: 1,

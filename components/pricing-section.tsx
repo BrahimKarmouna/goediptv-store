@@ -112,11 +112,11 @@ const plans: Plan[] = [
     cta: "Nu starten"
   },
   {
-    name: "1 Maand",
-    originalPrice: "€19,99",
-    discountedPrice: "€19,99",
-    period: "1 maand",
-    periodLabel: "1mnd/€19,99",
+    name: "1 Uur",
+    originalPrice: "free",
+    discountedPrice: "free",
+    period: "1 uur",
+    periodLabel: "1uur/free",
     description: "Flexibel abonnement",
     icon: Sparkles,
     features: [
